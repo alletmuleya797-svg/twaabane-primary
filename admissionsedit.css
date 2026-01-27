@@ -1,0 +1,361 @@
+:root {
+    --navy: #002D62;
+    --yellow: #FFD700;
+    --white: #ffffff;
+    --bg-light: #f4f7f6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: #333;
+    overflow-x: hidden;
+}
+/* --- Navigation Styles --- */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--yellow);
+    padding: 10px 5%;
+}
+
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.school-badge {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%; /* Makes logo circular */
+    object-fit: cover;
+    background: white;
+}
+
+.school-name {
+    font-weight: bold;
+    color: var(--navy);
+    font-size: 1.2rem;
+}
+
+.utility-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.btn-store {
+    background: var(--navy);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main-nav {
+    background-color: var(--navy);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: flex-end; /* Pushes main links to the right */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 500;
+}
+
+
+/* --- Hero Header --- */
+.admissions-header {
+    background: linear-gradient(rgba(0, 45, 98, 0.8), rgba(0, 45, 98, 0.8)), 
+                url('https://images.unsplash.com/photo-1523050853064-9d58ef1bb724?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--yellow);
+}
+
+.header-content h1 {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    animation: slideDown 0.8s ease;
+}
+
+/* --- Containers & Cards --- */
+.container {
+    max-width: 1000px;
+    margin: -50px auto 50px;
+    padding: 0 20px;
+}
+
+.section {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    color: var(--navy);
+}
+
+.section-title i { font-size: 2rem; color: var(--yellow); }
+
+/* --- Requirements Grid --- */
+.requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.req-item {
+    background: var(--bg-light);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-left: 4px solid var(--navy);
+}
+
+.req-item i { color: var(--navy); }
+
+/* --- How to Apply Timeline --- */
+.process-timeline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.timeline-box {
+    flex: 1;
+    min-width: 200px;
+    background: var(--bg-light);
+    padding: 25px;
+    border-radius: 12px;
+    position: relative;
+    text-align: center;
+}
+
+.timeline-box .number {
+    background: var(--navy);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-weight: bold;
+}
+
+.timeline-box.highlight {
+    background: var(--navy);
+    color: white;
+}
+
+.timeline-box.highlight .number { background: var(--yellow); color: var(--navy); }
+
+/* --- Buttons --- */
+.btn-main {
+    background: var(--yellow);
+    color: var(--navy);
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn-enrol {
+    background: var(--yellow);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+/* --- Important Dates --- */
+.date-card {
+    border: 2px dashed var(--navy);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.date-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* --- Contact Box --- */
+.contact-box {
+    background: var(--navy);
+    color: white;
+    padding: 50px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.contact-details {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.detail i { color: var(--yellow); margin-right: 8px; }
+
+/* --- Animations --- */
+@keyframes slideDown {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.reveal {
+    animation: fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.pulse:hover {
+    transform: scale(1.05);
+}
+
+/* --- Responsive Fixes --- */
+@media (max-width: 768px) {
+    .header-content h1 { font-size: 2.2rem; }
+    .container { margin-top: 20px; }
+}
+
+/* Footer Styling */
+.main-footer {
+    background-color: var(--navy);
+    color: var(--white);
+    padding: 60px 20px 20px 20px;
+    margin-top: 50px;
+    border-top: 5px solid var(--yellow);
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-div h3, .footer-div h4 {
+    color: var(--yellow);
+    margin-bottom: 20px;
+}
+
+.footer-logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.footer-logo {
+    width: 50px;
+    height: auto;
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.footer-div p {
+    line-height: 1.6;
+    font-size: 0.95rem;
+    color: #cbd5e0;
+}
+
+/* Quick Links Styling */
+.quick-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.quick-links ul li {
+    margin-bottom: 12px;
+}
+
+.quick-links ul li a {
+    color: var(--white);
+    text-decoration: none;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quick-links ul li a:hover {
+    color: var(--yellow);
+    padding-left: 8px;
+}
+
+/* Social Grid Styling */
+.social-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-item {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.social-item:hover {
+    color: var(--sky-blue);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    color: #a0aec0;
+}

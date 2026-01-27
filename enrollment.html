@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Enrollment - Twaabane Primary School</title>
+    <link rel="stylesheet" href="enrollment.css">
+</head>
+<body>
+
+<div class="form-container reveal">
+    <div class="form-sidebar">
+        <img src="school-logo.png" alt="School Logo" class="form-logo">
+        <h2>Join Twaabane Primary School</h2>
+        <p>Our goal is to empower all learners to become responsible God fearing citizens.</p>
+    </div>
+
+    <div class="form-content">
+        <form action="#">
+            <h3>Student Enrollment Form</h3>
+            
+            <div class="input-group">
+                <label>Student Full Name</label>
+                <input type="text" placeholder="Enter full name" required>
+            </div>
+
+            <div class="row">
+                <div class="input-group">
+                    <label>Date of Birth</label>
+                    <input type="date" required>
+                </div>
+                <div class="input-group">
+                    <label>Gender</label>
+                    <select>
+                        <option>Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Parent/Guardian Email</label>
+                <input type="email" placeholder="example@mail.com" required>
+            </div>
+
+            <div class="input-group">
+                <label>Home Address</label>
+                <textarea rows="3" placeholder="Enter address"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Submit Enrollment</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
