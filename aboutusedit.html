@@ -3,246 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twaabane Primary School</title>
-    <link rel="stylesheet" href="home.css">
-    <script src="./script.js"></script>
+    <title>About Us | Twaabane Primary School</title>
+    <link rel="stylesheet" href="aboutusedit.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-<div id="formOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999;">
-        <button id="closeForm" style="position:absolute; right:20px; top:20px; color:white; font-size:30px; background:none; border:none; cursor:pointer;">&times;</button>
-        <iframe src="enrollment-form.html" style="width:80%; height:80%; margin:5% 10%; border-radius:10px; border:none;"></iframe>
-</div>
+
+<header>
     <div class="top-nav">
-        <div class="logo-group">
-            <img src="school-logo.png" alt="Twaabane Logo" class="school-badge">
+        <div class="logo-section">
+            <img src="school-logo.png" alt="Logo" class="school-logo">
             <span class="school-name">Twaabane Primary School</span>
         </div>
-
     </div>
-    <!----
     <nav class="main-nav">
-    <div class="menu-toggle" id="mobile-menu">
-        <i class="fas fa-bars" id="hamburger"></i>
-        <i class="fas fa-times" id="close-btn" style="display: none;"></i>
-    </div>
-
-    <div class="nav-links-container" id="nav-menu">
-        <div class="nav-item"><a href="index.html">Home</a></div>
-        <div class="nav-item"><a href="about.html">About Us</a></div>
-        <div class="nav-item"><a href="academics.html">Academics</a></div>
-        <div class="nav-item"><a href="admissions.html">Admissions</a></div>
-        <div class="nav-item"><a href="contact.html">Contact</a></div>
-    </div>
-    </nav>
-    ---->
-    <nav class="main-nav">
-       <div class="menu-toggle" id="mobile-menu">
-           <i class="fas fa-bars" id="hamburger"></i>
-           <i class="fas fa-times" id="close-btn" style="display: none;"></i>
-       </div>        
         <div class="nav-links">
             <a href="index.html">Home</a>
-            <a href="aboutusedit.html">About Us</a>
+            <a href="aboutusedit.html" class="active">About Us</a>
             <a href="academicsedit.html">Academics</a>
             <a href="admissionsedit.html">Admissions</a>
             <a href="contactedit.html">Contact</a>
         </div>
     </nav>
-   <!---- 
-    <header class="hero reveal">
-        <div class="bg-shape yellow-corner"></div>
-        <div class="bg-shape blue-overlay"></div>
-        
-        <div class="hero-content">
-            <div class="hero-text-left">
-                <p class="subtitle">Try your kids to school</p>
-                <h1>The lead uniforms!</h1>
-                <div class="floating-image-card">
-                    <img src="IMG-20251106-WA0066.jpg" alt="Students">
-                </div>
-            </div>
+</header>
 
-            <div class="hero-card-right">
-                <div class="blob-shape">
-                    <h2>New to our school</h2>
-                    <p>Learn more about our offerings and how we can help your child succeed in their educational journey.</p>
-                    
-                    <a href="enrollment.html" class="btn-yellow">Enroll Now</a>
-                </div>
-            </div>
-        </div>
-    </header>
-    ----->
-
-<section class="hero-session">
-  <div class="hero-overlay">
-    <div class="hero-content">
-      <h1>Unlock Your Child's Future</h1>
-      <p>Inspiring minds, building leaders, fostering success — join us</p>
-      <a href="enrollment.html" class="cta-button">Enroll Now</a>
+<section class="about-hero">
+    <div class="hero-content reveal">
+        <h1>About Twaabane Primary</h1>
+        <p>Nurturing Excellence, Inspiring Futures.</p>
     </div>
-  </div>
-</section>
+</section>   
 
-
-
-<section class="subjects-section">
+<section class="info-cards">
     <div class="container">
-        <h2 class="section-title">Our Curriculum</h2>
-        <div class="subjects-grid">
-            
-            <div class="subject-card">
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=500" alt="English Language">
-                </div>
-                <div class="card-content">
-                    <i class="fas fa-book-open"></i>
-                    <h3>English Language</h3>
-                </div>
+        <div class="grid-layout">
+            <div class="card">
+                <div class="icon-wrap"><i class="fas fa-bullseye"></i></div>
+                <h3>Our Mission</h3>
+                <p>To facilitate the provision of education that enhances empowerment of the communities to <br>
+                    think in other termsand embrace diversity for gender equality.
+                    <br>
+                   Twaabane Primary School's priority is to produce individuals who are self-reliant and guided <br>
+                   by the Christian values of faith, love and prophetic voice.
+                </p>
             </div>
-
-            <div class="subject-card">
-                <div class="image-wrapper">
-                    <img src="Mathematics.jpeg" alt="Mathematics">
-                </div>
-                <div class="card-content">
-                    <i class="fas fa-calculator"></i>
-                    <h3>Mathematics</h3>
-                </div>
+            <div class="card">
+                <div class="icon-wrap"><i class="fas fa-eye"></i></div>
+                <h3>Our Vision</h3>
+                <p>Our vision is to establish and adminster a leadind centre of educational excellence in Binga <br>
+                   and beyond through promotion of innovation, real life and personal growth curriculum.
+                </p>
             </div>
-
-            <div class="subject-card">
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1530210124550-912dc1381cb8?q=80&w=500" alt="Science and Technology">
-                </div>
-                <div class="card-content">
-                    <i class="fas fa-microscope"></i>
-                    <h3>Science & Technology</h3>
-                </div>
+            <div class="card">
+                <div class="icon-wrap"><i class="fas fa-gem"></i></div>
+                <h3>Core Values</h3>
+                <ul>
+                    <li>Integrity - Being honest and having high moral behaviour</li>
+                    <li>Service - committed to deliver to our expectations</li>
+                    <li>Excellence - Every individual has a capacity to achieve</li>
+                    <li>Innovative - We strive to live with the current technological advancements</li>
+                    <li>Integrity - Being honest and having high moral behaviour</li>
+                    <li>Teamwork - We rely on each other, parents/guardians, learners and our shareholders</li>
+                </ul>
+                <p>Integrity, Respect, and Diligence.</p>
             </div>
-
-            <div class="subject-card">
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=500" alt="Local Languages">
-                </div>
-                <div class="card-content">
-                    <i class="fas fa-comments"></i>
-                    <h3>ChiTonga / IsiNdebele</h3>
-                </div>
+            <div class="card">
+                <div class="icon-wrap"><i class="fas fa-award"></i></div>
+                <h3>Achievements</h3>
+                <p>Champions in Regional Athletics 2025.</p>
             </div>
-
-            <div class="subject-card">
-                <div class="image-wrapper">
-                    <img src="Social Science.jpeg" alt="Social Science">
-                </div>
-                <div class="card-content">
-                    <i class="fas fa-globe-africa"></i>
-                    <h3>Social Science</h3>
-                </div>
+            <div class="card">
+                <div class="icon-wrap"><i class="fas fa-handshake"></i></div>
+                <h3>Community</h3>
+                <p>Building strong local partnerships.</p>
             </div>
-
-            <div class="subject-card">
-                <div class="image-wrapper">
-                    <img src="PE and Arts.jpeg" alt="PE and Arts">
-                </div>
-                <div class="card-content">
-                    <i class="fas fa-palette"></i>
-                    <h3>PE and Arts</h3>
-                </div>
-            </div>
-
         </div>
     </div>
 </section>
 
-<section class="classes-section">
+<section class="team-section">
     <div class="container">
-        <h2 class="section-title">Our Grade Levels</h2>
-        <div class="class-grid">
-            <div class="class-card">
-                <div class="image-wrapper">
-                    <img src="Grade 1.jpg" alt="Grade 1 Students">
+        <h2 class="section-title">Meet Our Team</h2>
+        <div class="team-grid">
+            <div class="member">
+                <div class="img-box">
+                    <img src="IMG-20251106-WA0069.jpg" alt="Grade 1">
+                    <div class="caption">Grade 1</div>
                 </div>
-                <div class="card-content">
-                    <h3>Grade 1</h3>
-                    <p>Fostering curiosity and foundational skills in a warm, engaging classroom environment.</p>
-                </div>
-            </div>
-            
-            <div class="class-card">
-                <div class="image-wrapper">
-                    <img src="Grade 2.jpg" alt="Grade 2 Students">
-                </div>
-                <div class="card-content">
-                    <h3>Grade 2</h3>
-                    <p>Strengthening literacy and independent thinking through collaborative learning.</p>
-                </div>
-            </div>
-
-            <div class="class-card">
-                <div class="image-wrapper">
-                    <img src="Grade 3.jpg" alt="Grade 3 Students">
-                </div>
-                <div class="card-content">
-                    <h3>Grade 3</h3>
-                    <p>Developing critical problem-solving skills and creative expression.</p>
-                </div>
-            </div>
-            <div class="class-card">
-                <div class="image-wrapper">
-                    <img src="Grade 4.jpg" alt="Grade 3 Students">
-                </div>
-                <div class="card-content">
-                    <h3>Grade 4</h3>
-                    <p>Encouraging academic inquiry and expanding conceptual understanding across diverse subjects.</p>
-                </div>
-            </div>
-            <div class="class-card">
-                <div class="image-wrapper">
-                    <img src="Grade 5.jpg" alt="Grade 3 Students">
-                </div>
-                <div class="card-content">
-                    <h3>Grade 5</h3>
-                    <p>Cultivating leadership qualities and advanced research skills in a supportive environment.</p>
-                </div>
-            </div>
-            <div class="class-card">
-                <div class="image-wrapper">
-                    <img src="Grade 6.jpg" alt="Grade 3 Students">
-                </div>
-                <div class="card-content">
-                    <h3>Grade 6</h3>
-                    <p>Preparing students for the transition to middle school with a focus on autonomy and excellence.</p>
-                </div>
-            </div>
-            </div>
-    </div>
-</section>
-
-<section class="staff-section">
-    <h2 class="section-title">OUR STAFF</h2>
-    <div class="underline"></div>
-
-    <div class="slider-stage">
-        <div class="slider-wrapper">
-            <div class="slide"><img src="Staff 1.jpg" alt="Staff 1"></div>
-            <div class="slide"><img src="Staff 2.jpg" alt="Staff 2"></div>
-            <div class="slide"><img src="Staff 3.jpg" alt="Staff 3"></div>
-            <div class="slide"><img src="Staff 4.jpg" alt="Staff 4"></div>
-            <div class="slide"><img src="Staff 5.jpg" alt="Staff 5"></div>
-            <div class="slide"><img src="Staff 6.jpg" alt="Staff 6"></div>
-            <div class="slide"><img src="Staff 1.jpg" alt="Staff 1"></div>
+            </div>         
+            <div class="member"><div class="img-box"><img src="1759846326194.jpg" alt="Grade 2"><div class="caption">Grade 2</div></div></div>
+            <div class="member"><div class="img-box"><img src="IMG-20251106-WA0066.jpg" alt="Grade 3"><div class="caption">Grade 3</div></div></div>
+            <div class="member"><div class="img-box"><img src="1759845936889.jpg" alt="Grade 4"><div class="caption">Grade 4</div></div></div>
+            <div class="member"><div class="img-box"><img src="1763713556983.jpg" alt="Grade 5"><div class="caption">Grade 5</div></div></div>
+            <div class="member"><div class="img-box"><img src="1763713369021.jpg" alt="Grade 6"><div class="caption">Grade 6</div></div></div>
         </div>
     </div>
 </section>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<!---------------FOOTER----------------->
 <footer class="main-footer">
     <div class="footer-container">
         <div class="footer-div school-info">
             <div class="footer-logo-area">
-                <img src="school-logo.png" alt="Logo" class="footer-logo"> <h3>Twaabane Primary School</h3>
+                <img src="school-logo.png" alt="Logo" class="school-logo"> <h3>Twaabane Primary School</h3>
             </div>
             <p>Providing quality education and fostering a lead-ready generation. We are committed to excellence in academics, sports, and character building.</p>
         </div>
@@ -250,7 +111,7 @@
         <div class="footer-div quick-links">
             <h4>Quick Navigation</h4>
             <ul>
-                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="aboutusedit.html"><i class="fas fa-info-circle"></i> About Us</a></li>
                 <li><a href="admissionsedit.html"><i class="fas fa-user-plus"></i> Admissions</a></li>
                 <li><a href="academicsedit.html"><i class="fas fa-book"></i> Academics</a></li>
@@ -261,12 +122,12 @@
         <div class="footer-div social-links">
             <h4>Connect With Us</h4>
             <div class="social-grid">
-                <a href="https://www.facebook.com/profile.php?id=61584482721749&__cft__[0]=AZa_BGlPetQp07ZWR9uRXzoqTPtZRcSlNPxASCpFkh4olH3RCmIQ1l7iPVEd7vpgW1ZRrYiOgNHhVxr6fVRDkNOWHUEe3rXUJUxqBfGvbOGjKhB79_YoftOL7hanbpZWCz0eaPoHSOvKKTwuvn17D8UGhZ1z8NCZSLDfFNGVIU-I1Yi3Fc56aI1m0i0NTI72Ts_qg959wJuXMZrvv68EkFVX&__tn__=-UC%2CP-R" class="social-item"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="#" class="social-item"><i class="fab fa-facebook-f"></i> Facebook</a>
                 <a href="#" class="social-item"><i class="fab fa-instagram"></i> Instagram</a>
                 <a href="#" class="social-item"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 <a href="#" class="social-item"><i class="fab fa-twitter"></i> Twitter</a>
             </div>
-        </div> 
+        </div>
     </div>
     <div class="footer-bottom">
         <p>&copy; 2026 Twaabane Primary School. All Rights Reserved.</p>
