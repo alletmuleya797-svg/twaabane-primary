@@ -8,17 +8,16 @@
     <script src="./script.js"></script>
 </head>
 <body>
-
+<div id="formOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999;">
+        <button id="closeForm" style="position:absolute; right:20px; top:20px; color:white; font-size:30px; background:none; border:none; cursor:pointer;">&times;</button>
+        <iframe src="enrollment-form.html" style="width:80%; height:80%; margin:5% 10%; border-radius:10px; border:none;"></iframe>
+</div>
     <div class="top-nav">
         <div class="logo-group">
             <img src="school-logo.png" alt="Twaabane Logo" class="school-badge">
             <span class="school-name">Twaabane Primary School</span>
         </div>
-        <nav class="utility-links">
-            <a href="#">Follow Us</a>
-            <a href="#">Contact</a>
-            <button class="btn-store">Fray Store</button>
-        </nav>
+
     </div>
     <!----
     <nav class="main-nav">
@@ -42,14 +41,14 @@
            <i class="fas fa-times" id="close-btn" style="display: none;"></i>
        </div>        
         <div class="nav-links">
-            <a href="home.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="aboutusedit.html">About Us</a>
             <a href="academicsedit.html">Academics</a>
             <a href="admissionsedit.html">Admissions</a>
             <a href="contactedit.html">Contact</a>
         </div>
     </nav>
-    
+   <!---- 
     <header class="hero reveal">
         <div class="bg-shape yellow-corner"></div>
         <div class="bg-shape blue-overlay"></div>
@@ -66,17 +65,27 @@
             <div class="hero-card-right">
                 <div class="blob-shape">
                     <h2>New to our school</h2>
-                <p>
-                   At Twaabane Primary School, we are committed to creating a nurturing environment where every child can thrive.<br> 
-                   Our dedicated educators focus on developing well-rounded students ready to tackle future challenges. Join us in<br>
-                   fostering curiosity and creativity as we work together to build a brighter future for our children!
-                </p>
-                    <!--<button class="btn-yellow">Enrol Now</button>-->
+                    <p>Learn more about our offerings and how we can help your child succeed in their educational journey.</p>
+                    
                     <a href="enrollment.html" class="btn-yellow">Enroll Now</a>
                 </div>
             </div>
         </div>
     </header>
+    ----->
+
+<section class="hero-session">
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <h1>Unlock Your Child's Future</h1>
+      <p>Inspiring minds, building leaders, fostering success — join us</p>
+      <a href="enrollment.html" class="cta-button">Enroll Now</a>
+    </div>
+  </div>
+</section>
+
+
+
 <section class="subjects-section">
     <div class="container">
         <h2 class="section-title">Our Curriculum</h2>
@@ -94,7 +103,7 @@
 
             <div class="subject-card">
                 <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1509228468518-180dd48a5791?q=80&w=500" alt="Mathematics">
+                    <img src="Mathematics.jpeg" alt="Mathematics">
                 </div>
                 <div class="card-content">
                     <i class="fas fa-calculator"></i>
@@ -124,7 +133,7 @@
 
             <div class="subject-card">
                 <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=500" alt="Social Science">
+                    <img src="Social Science.jpeg" alt="Social Science">
                 </div>
                 <div class="card-content">
                     <i class="fas fa-globe-africa"></i>
@@ -134,7 +143,7 @@
 
             <div class="subject-card">
                 <div class="image-wrapper">
-                    <img src="https://www.dreamstime.com/diverse-african-primary-school-children-doing-physical-exercise-pt-lesson-pretoria-south-africa-august-image135444411" alt="PE and Arts">
+                    <img src="PE and Arts.jpeg" alt="PE and Arts">
                 </div>
                 <div class="card-content">
                     <i class="fas fa-palette"></i>
@@ -146,6 +155,86 @@
     </div>
 </section>
 
+<section class="classes-section">
+    <div class="container">
+        <h2 class="section-title">Our Grade Levels</h2>
+        <div class="class-grid">
+            <div class="class-card">
+                <div class="image-wrapper">
+                    <img src="Grade 1.jpg" alt="Grade 1 Students">
+                </div>
+                <div class="card-content">
+                    <h3>Grade 1</h3>
+                    <p>Fostering curiosity and foundational skills in a warm, engaging classroom environment.</p>
+                </div>
+            </div>
+            
+            <div class="class-card">
+                <div class="image-wrapper">
+                    <img src="Grade 2.jpg" alt="Grade 2 Students">
+                </div>
+                <div class="card-content">
+                    <h3>Grade 2</h3>
+                    <p>Strengthening literacy and independent thinking through collaborative learning.</p>
+                </div>
+            </div>
+
+            <div class="class-card">
+                <div class="image-wrapper">
+                    <img src="Grade 3.jpg" alt="Grade 3 Students">
+                </div>
+                <div class="card-content">
+                    <h3>Grade 3</h3>
+                    <p>Developing critical problem-solving skills and creative expression.</p>
+                </div>
+            </div>
+            <div class="class-card">
+                <div class="image-wrapper">
+                    <img src="Grade 4.jpg" alt="Grade 3 Students">
+                </div>
+                <div class="card-content">
+                    <h3>Grade 4</h3>
+                    <p>Encouraging academic inquiry and expanding conceptual understanding across diverse subjects.</p>
+                </div>
+            </div>
+            <div class="class-card">
+                <div class="image-wrapper">
+                    <img src="Grade 5.jpg" alt="Grade 3 Students">
+                </div>
+                <div class="card-content">
+                    <h3>Grade 5</h3>
+                    <p>Cultivating leadership qualities and advanced research skills in a supportive environment.</p>
+                </div>
+            </div>
+            <div class="class-card">
+                <div class="image-wrapper">
+                    <img src="Grade 6.jpg" alt="Grade 3 Students">
+                </div>
+                <div class="card-content">
+                    <h3>Grade 6</h3>
+                    <p>Preparing students for the transition to middle school with a focus on autonomy and excellence.</p>
+                </div>
+            </div>
+            </div>
+    </div>
+</section>
+
+<section class="staff-section">
+    <h2 class="section-title">OUR STAFF</h2>
+    <div class="underline"></div>
+
+    <div class="slider-stage">
+        <div class="slider-wrapper">
+            <div class="slide"><img src="Staff 1.jpg" alt="Staff 1"></div>
+            <div class="slide"><img src="Staff 2.jpg" alt="Staff 2"></div>
+            <div class="slide"><img src="Staff 3.jpg" alt="Staff 3"></div>
+            <div class="slide"><img src="Staff 4.jpg" alt="Staff 4"></div>
+            <div class="slide"><img src="Staff 5.jpg" alt="Staff 5"></div>
+            <div class="slide"><img src="Staff 6.jpg" alt="Staff 6"></div>
+            <div class="slide"><img src="Staff 1.jpg" alt="Staff 1"></div>
+        </div>
+    </div>
+</section>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <!---------------FOOTER----------------->
@@ -172,17 +261,16 @@
         <div class="footer-div social-links">
             <h4>Connect With Us</h4>
             <div class="social-grid">
-                <a href="#" class="social-item"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="https://www.facebook.com/profile.php?id=61584482721749&__cft__[0]=AZa_BGlPetQp07ZWR9uRXzoqTPtZRcSlNPxASCpFkh4olH3RCmIQ1l7iPVEd7vpgW1ZRrYiOgNHhVxr6fVRDkNOWHUEe3rXUJUxqBfGvbOGjKhB79_YoftOL7hanbpZWCz0eaPoHSOvKKTwuvn17D8UGhZ1z8NCZSLDfFNGVIU-I1Yi3Fc56aI1m0i0NTI72Ts_qg959wJuXMZrvv68EkFVX&__tn__=-UC%2CP-R" class="social-item"><i class="fab fa-facebook-f"></i> Facebook</a>
                 <a href="#" class="social-item"><i class="fab fa-instagram"></i> Instagram</a>
                 <a href="#" class="social-item"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 <a href="#" class="social-item"><i class="fab fa-twitter"></i> Twitter</a>
             </div>
-        </div>
+        </div> 
     </div>
     <div class="footer-bottom">
         <p>&copy; 2026 Twaabane Primary School. All Rights Reserved.</p>
     </div>
 </footer>
 </body>
-
 </html>
