@@ -115,14 +115,14 @@
             // We create a unique name using a timestamp to avoid overwriting
             const fileName = `${Date.now()}-${file.name}`;
             const { data: uploadData, error: uploadError } = await _supabase.storage
-                .from('birth-certificates')
+                .from('StudentsCertificates')
                 .upload(fileName, file);
 
             if (uploadError) throw uploadError;
 
             // Get the public URL for the file we just uploaded
             const { data: publicUrlData } = _supabase.storage
-                .from('birth-certificates')
+                .from('StudentsCertificates')
                 .getPublicUrl(fileName);
             
             const fileUrl = publicUrlData.publicUrl;
@@ -130,7 +130,7 @@
             // --- STEP B: INSERT DATA INTO TABLE ---
             const { error: dbError } = await _supabase
                 .from('StudentEnrollment')
-                .insert([{
+                .insert([{ 
                     "Student Name": fullName, // Matches your screenshot
                     "DOB": document.getElementById('dob').value,
                     "Gender": document.getElementById('gender').value,
@@ -156,4 +156,5 @@
 </script>
 </body>
 </html>
+
 
