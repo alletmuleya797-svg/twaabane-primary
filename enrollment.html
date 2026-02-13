@@ -88,68 +88,72 @@
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-    const scriptURL = 'PASTE_YOUR_NEW_DEPLOY_URL_HERE'; // Make sure this is the NEW one
-    
+    // Replace these with your actual credentials from Settings > API
+    const SUPABASE_URL = 'https://your-project-id.supabase.co';
+    const SUPABASE_KEY = 'your-anon-public-key';
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
     const form = document.getElementById('enrollmentForm');
     const submitBtn = document.getElementById('submitBtn');
     const successMsg = document.getElementById('successMessage');
 
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Uploading Documents...";
+
         const fileInput = document.getElementById('fileInput');
         const file = fileInput.files[0];
-        
-        // Simple size check (Optional: Alert if > 5MB)
-        if (file.size > 5 * 1024 * 1024) {
-            alert("File is too large. Please upload a file smaller than 5MB.");
-            return;
-        }
+        const fullName = document.getElementById('fullName').value;
 
-        const reader = new FileReader();
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = "Processing... Please wait";
+        try {
+            // --- STEP A: UPLOAD FILE TO STORAGE ---
+            // We create a unique name using a timestamp to avoid overwriting
+            const fileName = `${Date.now()}-${file.name}`;
+            const { data: uploadData, error: uploadError } = await _supabase.storage
+                .from('birth-certificates')
+                .upload(fileName, file);
 
-        reader.onload = function() {
-            const base64Data = reader.result.split(',')[1];
+            if (uploadError) throw uploadError;
+
+            // Get the public URL for the file we just uploaded
+            const { data: publicUrlData } = _supabase.storage
+                .from('birth-certificates')
+                .getPublicUrl(fileName);
             
-            const payload = {
-                fullName: document.getElementById('fullName').value,
-                dob: document.getElementById('dob').value,
-                gender: document.getElementById('gender').value,
-                email: document.getElementById('email').value,
-                address: document.getElementById('address').value,
-                fileByte: base64Data,
-                fileType: file.type,
-                fileName: file.name
-            };
+            const fileUrl = publicUrlData.publicUrl;
 
-            fetch(scriptURL, { 
-                method: 'POST', 
-                mode: 'no-cors', // Added for better Google Script compatibility
-                body: JSON.stringify(payload),
-                headers: {
-                    "Content-Type": "text/plain;charset=utf-8"
-                }
-            })
-            .then(() => {
-                // With 'no-cors', we can't read the "Success" text easily,
-                // so we assume success if the fetch doesn't 'catch' an error.
-                form.style.display = 'none';
-                successMsg.style.display = 'block';
-                window.scrollTo(0,0);
-            })
-            .catch(error => {
-                console.error('Error!', error.message);
-                alert("Submission failed. Please check your internet.");
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = "Submit Enrollment";
-            });
-        };
-        
-        reader.readAsDataURL(file);
+            // --- STEP B: INSERT DATA INTO TABLE ---
+            const { error: dbError } = await _supabase
+                .from('StudentEnrollment')
+                .insert([{
+                    "Student Name": fullName, // Matches your screenshot
+                    "DOB": document.getElementById('dob').value,
+                    "Gender": document.getElementById('gender').value,
+                    "Parent/Guardian email": document.getElementById('email').value, // Adjust to match your DB column
+                    "address": document.getElementById('address').value,
+                    "file_url": fileUrl
+                }]);
+
+            if (dbError) throw dbError;
+
+            // --- STEP C: SUCCESS ---
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+            window.scrollTo(0, 0);
+
+        } catch (error) {
+            console.error('Error:', error.message);
+            alert("Submission failed: " + error.message);
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = "Submit Enrollment";
+        }
     });
 </script>
 </body>
 </html>
+
