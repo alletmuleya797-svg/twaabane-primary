@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Enrollment - Twaabane Primary School</title>
     <link rel="stylesheet" href="enrollment.css">
+    <style>
+        #successMessage {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: #fff;
+            border-radius: 12px;
+        }
+        .success-icon { font-size: 60px; margin-bottom: 20px; }
+        .btn-secondary {
+            background-color: #FFD700;
+            color: #002D62;
+            border: none;
+            padding: 12px 25px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
@@ -16,43 +36,120 @@
     </div>
 
     <div class="form-content">
-        <form action="#">
+        <div id="successMessage">
+             <div class="success-icon">✅</div>
+             <h3 style="color: #002D62;">Enrollment Received!</h3>
+             <p>Thank you for choosing Twaabane. Your documents have been securely uploaded.</p>
+             <button onclick="location.reload()" class="btn-secondary">Enroll Another Student</button>
+        </div>
+    
+        <form id="enrollmentForm">
             <h3>Student Enrollment Form</h3>
             
             <div class="input-group">
                 <label>Student Full Name</label>
-                <input type="text" placeholder="Enter full name" required>
+                <input type="text" id="fullName" placeholder="Enter full name" required>
             </div>
 
             <div class="row">
                 <div class="input-group">
                     <label>Date of Birth</label>
-                    <input type="date" required>
+                    <input type="date" id="dob" required>
                 </div>
                 <div class="input-group">
                     <label>Gender</label>
-                    <select>
-                        <option>Select</option>
-                        <option>Male</option>
-                        <option>Female</option>
+                    <select id="gender" required>
+                        <option value="">Select</option>
+                        <option value="Male">Male</option>
+                         
                     </select>
                 </div>
             </div>
 
             <div class="input-group">
                 <label>Parent/Guardian Email</label>
-                <input type="email" placeholder="example@mail.com" required>
+                <input type="email" id="email" placeholder="example@mail.com" required>
             </div>
 
             <div class="input-group">
                 <label>Home Address</label>
-                <textarea rows="3" placeholder="Enter address"></textarea>
+                <textarea rows="3" id="address" placeholder="Enter address"></textarea>
             </div>
 
-            <button type="submit" class="btn-submit">Submit Enrollment</button>
+            <div class="file-upload-box">
+                <label>Upload Birth Certificate (PDF/Image)</label>
+                <input type="file" id="fileInput" accept="image/*,.pdf" required>
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn-submit">
+                Submit Enrollment
+            </button>
         </form>
     </div>
 </div>
 
+<script>
+    const scriptURL = 'PASTE_YOUR_NEW_DEPLOY_URL_HERE'; // Make sure this is the NEW one
+    
+    const form = document.getElementById('enrollmentForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMsg = document.getElementById('successMessage');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        
+        const fileInput = document.getElementById('fileInput');
+        const file = fileInput.files[0];
+        
+        // Simple size check (Optional: Alert if > 5MB)
+        if (file.size > 5 * 1024 * 1024) {
+            alert("File is too large. Please upload a file smaller than 5MB.");
+            return;
+        }
+
+        const reader = new FileReader();
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Processing... Please wait";
+
+        reader.onload = function() {
+            const base64Data = reader.result.split(',')[1];
+            
+            const payload = {
+                fullName: document.getElementById('fullName').value,
+                dob: document.getElementById('dob').value,
+                gender: document.getElementById('gender').value,
+                email: document.getElementById('email').value,
+                address: document.getElementById('address').value,
+                fileByte: base64Data,
+                fileType: file.type,
+                fileName: file.name
+            };
+
+            fetch(scriptURL, { 
+                method: 'POST', 
+                mode: 'no-cors', // Added for better Google Script compatibility
+                body: JSON.stringify(payload),
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8"
+                }
+            })
+            .then(() => {
+                // With 'no-cors', we can't read the "Success" text easily,
+                // so we assume success if the fetch doesn't 'catch' an error.
+                form.style.display = 'none';
+                successMsg.style.display = 'block';
+                window.scrollTo(0,0);
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert("Submission failed. Please check your internet.");
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = "Submit Enrollment";
+            });
+        };
+        
+        reader.readAsDataURL(file);
+    });
+</script>
 </body>
 </html>
