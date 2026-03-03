@@ -1105,3 +1105,109 @@
   }
 
 }
+
+
+/*--------TESTIMONIALS----*/
+/* Testimonials Section Styling */
+.testimonials-section {
+    padding: 80px 0;
+    background-color: #f4f7f9;
+    overflow: hidden; /* Important for the slider */
+}
+
+.testimonial-slider {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    position: relative;
+}
+
+/* The Track that moves */
+.testimonial-track {
+    display: flex;
+    width: calc(350px * 8); /* Adjust based on card width + gap */
+    animation: scroll 30s linear infinite;
+}
+
+.testimonial-track:hover {
+    animation-play-state: paused; /* Slides stop when user hovers */
+}
+
+/* Individual Card Styling */
+.testimonial-card {
+    background: white;
+    width: 350px;
+    margin: 0 15px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 33, 71, 0.08);
+    border-top: 4px solid #FFD700; /* Gold Accent */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 33, 71, 0.15);
+}
+
+.quote-icon {
+    color: #FFD700;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.message {
+    color: #444;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.testimonial-footer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #002147;
+    object-fit: cover;
+}
+
+.parent-info h4 {
+    color: #002147;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.parent-info span {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+/* Animation Keyframes */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-350px * 4)); } /* Moves by half the track length */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .testimonial-card {
+        width: 280px; /* Slightly smaller on mobile */
+    }
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-280px * 4)); }
+    }
+}
+
+
