@@ -239,7 +239,7 @@
 
 .section-title::after {
     content: '';
-    display: block;
+    display: block; 
     width: 60px;
     height: 4px;
     background: #FFD700; /* School Gold */
@@ -1209,5 +1209,6 @@
         100% { transform: translateX(calc(-280px * 4)); }
     }
 }
+
 
 
