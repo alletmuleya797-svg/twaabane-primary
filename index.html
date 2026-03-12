@@ -1,329 +1,737 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="description" content="Twaabane Primary School, located in Binga, is dedicated to nurturing young minds in a supportive and empowering environment. Explore our academic programs and enrollment information online.">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twaabane Primary School</title>
-    <link rel="stylesheet" href="home.css">
-    <script src="./script.js"></script> 
-    <link rel="icon" href="school-logo.png" type="image/png">
+  <meta name="description" content="Twaabane Primary School, located in Binga, is dedicated to nurturing young minds in a supportive and empowering environment. Explore our academic programs and enrollment information online.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Twaabane Primary School</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    /* Reset / base */
+    :root{
+      --brand:#f6b51c; /* yellow */
+      --accent:#0b74d1;
+      --muted:#6b7280;
+      --bg:#ffffff;
+      --text:#0f172a;
+      --max-width:1200px;
+      --navy:#072b57;
+      --nav-link-hover: #f6b51c;
+      --footer-hover-glow: rgba(246,181,28,0.18);
+      --light-blue: #6A89CC; /* Periwinkle Blue */
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+
+    /* Container helper */
+    .container{width:90%;max-width:var(--max-width);margin:0 auto}
+
+    /* ---------- UPDATED TOP AREA ---------- */
+
+    .top-strip{
+      background:var(--brand);
+      color:var(--navy);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:8px 0;
+    }
+    .top-strip .container{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand-inline{display:flex;align-items:center;gap:10px}
+    .brand-inline .school-badge{
+      width:40px;height:40px;border-radius:50%;background:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:var(--navy)
+    }
+
+    .brand-inline .school-title{font-weight:700;color:var(--navy);font-size:1rem}
+
+    .top-utilities{display:flex;gap:12px;align-items:center}
+    .top-utilities a{color:var(--navy);font-weight:600;font-size:0.95rem}
+    .top-utilities .signin-btn{
+      background:var(--navy);color:var(--brand);padding:6px 12px;border-radius:8px;border:none;font-weight:700;cursor:pointer;
+      box-shadow:0 2px 6px rgba(7,20,40,0.08)
+    }
+
+    /* Main nav bar (navy) */
+    .main-nav{
+      background:var(--navy);
+      color:#fff;
+      display:block;
+      position:relative;
+    }
+    .main-nav .nav-container{
+      display:flex;
+      align-items:center;
+      padding:12px 0;
+      gap:12px;
+      position:relative;
+      justify-content:center;
+    }
+
+    .nav-left-space{
+      width:240px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      visibility:visible;
+    }
+
+    .nav-left-space .mini-box{width:36px;height:36px;background:rgba(255,255,255,0.06);border-radius:8px}
+
+    /* Nav links: white by default, yellow hover */
+    .nav-links{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      padding:6px 12px;
+      border-radius:10px;
+      font-weight:700;
+    }
+    .nav-links a{
+      color:#fff; /* white default */
+      padding:8px 12px;border-radius:8px;display:inline-block;
+      transition: background .18s, transform .12s, color .12s, box-shadow .18s;
+      position:relative;
+    }
+    /* hover: yellow text */
+    .nav-links a:hover{
+      color:var(--nav-link-hover);
+      transform:translateY(-3px);
+      text-decoration:none;
+    }
+
+    .nav-links.right-shift{margin-left:auto;margin-right:8px}
+
+    /* Mobile toggle (hamburger) - default hidden, shown via media queries below */
+    /* UPDATED: rounded navy square toggle that immediately shows close icon when opened */
+    .menu-toggle{
+      display:none;
+      background:var(--navy);
+      color:#fff;
+      border:none;
+      padding:8px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:1.15rem;
+      width:52px;
+      height:52px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 6px 18px rgba(7,20,40,0.12);
+    }
+    .menu-toggle:focus{outline:3px solid rgba(246,181,28,0.18); outline-offset:3px; border-radius:10px}
+
+    /* Mobile nav panel */
+    .mobile-nav-panel{
+      display:none;
+      width:100%;
+      background:var(--navy);
+      color:#fff;
+      border-top:1px solid rgba(255,255,255,0.04);
+      box-shadow:0 8px 24px rgba(2,6,23,0.25);
+    }
+    .mobile-nav-panel .mobile-links{display:flex;flex-direction:column;padding:12px;gap:6px}
+    .mobile-nav-panel .mobile-links a{padding:12px;border-radius:8px;color:#fff;background:rgba(255,255,255,0.02);font-weight:700}
+    .mobile-nav-panel .mobile-links a:hover{color:var(--nav-link-hover); background: rgba(255,255,255,0.02)}
+
+    /* --- START UPDATED HERO STYLES --- */
+    /* REDUCED HERO HEIGHT ONLY */
+    .hero-split {
+      position: relative;
+      display: flex;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      min-height: 320px; /* reduced from 400px to 320px */
+      background-color: var(--brand);
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .hero-left {
+      flex: 1.2;
+      background-image: linear-gradient(rgba(106, 137, 204, 0.5), rgba(106, 137, 204, 0.5)), url('cover page final.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 36px 5% 60px 6%; /* tightened vertical padding */
+      z-index: 1;
+      min-width: 55%;
+    }
+    .hero-left h1 {
+      font-size: 2rem; /* slightly smaller to fit the reduced height */
+      color: var(--navy);
+      margin: 0;
+      line-height: 1.05;
+      font-weight: 900;
+    }
+
+    .hero-right {
+      flex: 0.8;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+      min-width: 45%;
+    }
+
+    .mission-blob {
+      background: var(--navy);
+      color: white;
+      padding: 20px 28px; /* reduced padding */
+      border-radius: 60px 0 0 120px;
+      width: 130%;
+      z-index: 2;
+      box-shadow: -10px 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .mission-blob h2 { font-size: 1.1rem; margin-bottom: 8px; text-align: center; color: var(--brand); }
+    .mission-blob p { font-size: 0.82rem; line-height: 1.35; margin-bottom: 8px; }
+
+    .floating-image-card {
+      position: absolute;
+      left: 10%;
+      bottom: 14px; /* slightly higher so it doesn't push section taller */
+      width: 32%; /* slightly smaller */
+      max-width: 360px;
+      z-index: 5;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 4px solid #fff;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
+    }
+
+    .floating-image-card img { height: 180px; width: 100%; object-fit: cover; }
+
+    .cta-button-yellow {
+      background-color: #f6b51c !important; /* Brand Yellow */
+      color: #072b57 !important;           /* Brand Navy */
+      padding: 10px 24px !important;
+      border-radius: 8px !important;
+      font-weight: 800 !important;
+      text-transform: none;
+      text-decoration: none !important;
+      display: inline-block !important;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.2s, background-color 0.2s;
+      border: none !important;
+    }
+
+    .hero-right .mission-blob .cta-wrap a:hover {
+      background-color: #ffc94d !important;
+      transform: scale(1.05);
+      color: #072b57 !important;
+    }
+    /* --- END HERO ADJUSTMENTS --- */
+
+    /* Sections */
+.section-title {
+    font-size: 2.5rem !important; /* Significant increase for "Our Curriculum" etc. */
+    font-weight: 800 !important;   /* Extra bold for a professional look */
+    color: #072b57 !important;     /* School brand navy */
+    text-align: center;
+    margin-bottom: 40px;           /* More space below the title */
+    letter-spacing: -0.5px;        /* Tighter, modern heading style */
+}
+/* --- RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.8rem !important; /* Scales down for mobile phones */
+        margin-bottom: 25px;
+    }
+  }
+    .subjects-grid, .class-grid{
+      display:grid;
+      gap:14px;
+    }
+/* --- UPDATED SUBJECT CARD STYLES --- */
+.subjects-grid .subject-card, 
+.class-grid .class-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #f0f2f5;
+    display: flex;
+    flex-direction: column; /* Fixed from 'olumn' found on line 148 */
+    transition: transform 0.3s ease;
+}
+
+/* Increased height and ensured layout is centered */
+.subject-card .image-wrapper, 
+.class-card .image-wrapper {
+    height: 200px; /* Increased from 160px to occupy more space */
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+}
+
+/* THE FIX: 'cover' makes the image occupy the entire container */
+.subject-card .image-wrapper img, 
+.class-card .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Forces image to fill the container completely */
+    transition: transform 0.5s ease;
+}
+
+.card-content {
+    padding: 15px; /* Increased padding for better spacing */
+}
+
+.card-content h3 {
+    margin: 6px 0 0;
+    font-size: 1.1rem;
+    color: #072b57; /* School navy brand color */
+}
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .subject-card .image-wrapper, 
+    .class-card .image-wrapper {
+        height: 180px; /* Slightly shorter for mobile screens */
+    }
+}
+
+/* Optional: Subtle zoom effect on hover */
+.subject-card:hover img {
+    transform: scale(1.1);
+}
+
+/* MODIFIED TESTIMONIALS (INFINITE SLIDER) */
+    .testimonials-section{padding:28px 0;background:linear-gradient(180deg,#fff,#fbfcff); overflow: hidden;}
+    .testimonial-slider{
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        padding: 20px 0;
+    }
+    .testimonial-track {
+        display: flex;
+        width: max-content;
+        animation: scroll 40s linear infinite; /* Automatic scrolling */
+    }
+    .testimonial-track:hover {
+        animation-play-state: paused; /* Pause on hover for readability */
+    }
+    .testimonial-card{
+        width: 350px; 
+        margin: 0 15px;
+        background:#fff;
+        padding:24px;
+        border-radius:10px;
+        border:1px solid #eef2f7;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        flex-shrink: 0;
+    }
+
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-350px * 3 - 30px * 3)); } /* Moves the width of original cards */
+    }
+
+    .testimonial-footer{display:flex;gap:10px;align-items:center;margin-top:12px}
+    .profile-pic{width:44px;height:44px;border-radius:50%;object-fit:cover}
+
+    /* Footer */
+    .main-footer{background:#08132a;color:#dbeafe;padding:24px 0;margin-top:30px}
+    .footer-container{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:var(--max-width);margin:0 auto}
+    .footer-logo{width:56px;height:56px;border-radius:8px;object-fit:cover}
+    .footer-div h4{margin:0 0 8px;color:#f6b51c}
+    .footer-div ul{list-style:none;padding:0;margin:0}
+    .footer-div li{margin:8px 0}
+    .footer-div a{color:rgba(219,234,254,0.9);display:inline-flex;align-items:center;gap:8px;transition:transform .18s, color .18s}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:12px;margin-top:16px;text-align:center;color:rgba(219,234,254,0.9)}
+
+    /* Quick Navigation hover effects */
+    .quick-links ul li a{
+      position:relative;
+      padding-left:6px;
+      transition: transform .18s ease, box-shadow .18s ease, color .18s ease;
+    }
+    .quick-links ul li a::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-4px;
+      height:3px;
+      width:0%;
+      background:var(--brand);
+      border-radius:4px;
+      transition: width .25s cubic-bezier(.2,.9,.2,1), opacity .18s;
+      opacity:0;
+    }
+    .quick-links ul li a:hover{
+      color:var(--brand);
+      transform: translateX(6px);
+      box-shadow: 0 6px 18px var(--footer-hover-glow);
+    }
+    .quick-links ul li a:hover::after{
+      width:100%;
+      opacity:1;
+    }
+
+    /* Socials (Connect With Us) hover effects */
+    .social-grid .social-item{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 10px;
+      border-radius:8px;
+      color:rgba(219,234,254,0.95);
+      transition: background .18s ease, transform .18s ease, box-shadow .18s ease, color .18;
+    }
+    .social-grid .social-item i{
+      width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:6px;
+      transition: color .18s ease, transform .18s ease;
+      color:rgba(219,234,254,0.95);
+    }
+    .social-grid .social-item:hover{
+      background: rgba(246,181,28,0.06);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 28px rgba(7,20,40,0.12);
+      color:var(--navy);
+    }
+    .social-grid .social-item:hover i{
+      color:var(--brand);
+      transform: scale(1.05);
+    }
+
+    /* Responsive grid sizes */
+    @media (min-width: 760px){
+      .subjects-grid{grid-template-columns:repeat(3,1fr)}
+      .class-grid{grid-template-columns:repeat(3,1fr)}
+    }
+    @media (min-width: 980px){
+      .subjects-grid{grid-template-columns:repeat(3,1fr)}
+      .class-grid{grid-template-columns:repeat(3,1fr)}
+      .footer-container{grid-template-columns:1.4fr 1fr 1fr}
+      /* On large screens hide the menu toggle and show nav links */
+      .menu-toggle{display:none !important}
+      .nav-links{display:flex}
+      .nav-left-space{display:flex}
+    }
+
+    /* Mobile / tablet overrides */
+    @media (max-width: 979px){
+      .menu-toggle{display:flex}
+      .nav-links{display:none}
+      .nav-left-space{width:120px} 
+      
+      /* HERO TWEAK: Maintaining side-by-side but scaling fonts */
+      .hero-left h1 { font-size: 1.5rem; }
+      .hero-left p.top-tagline { font-size: 0.8rem; }
+      .mission-blob { padding: 20px 25px; border-radius: 50px 0 0 100px; }
+      .mission-blob h2 { font-size: 1rem; }
+      .mission-blob p { font-size: 0.7rem; line-height: 1.3; }
+      .floating-image-card { bottom: 20px; border-radius: 10px; }
+      .floating-image-card img { height: 180px; }
+      .image-label-overlay { font-size: 0.7rem; padding: 6px 12px; bottom: 10px; left: 10px; }
+      
+      .testimonial-track { animation: scroll 20s linear infinite; }
+    }
+
+    /* Narrow mobile tweaks */
+    @media (max-width: 759px){
+      .top-strip .container{padding:8px}
+      .nav-left-space{width:80px}
+      .subjects-grid{grid-template-columns:1fr}
+      .class-grid{grid-template-columns:1fr}
+      .footer-container{grid-template-columns:1fr;gap:12px}
+    }
+
+    @media (max-width: 480px){
+      .nav-left-space{width:60px}
+      .hero-split { min-height: 320px; }
+    }
+
+    .mobile-nav-panel.open{display:block}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
 </head>
 <body>
-<div id="formOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999;">
-        <button id="closeForm" style="position:absolute; right:20px; top:20px; color:white; font-size:30px; background:none; border:none; cursor:pointer;">&times;</button>
-        <iframe src="enrollment-form.html" style="width:80%; height:80%; margin:5% 10%; border-radius:10px; border:none;"></iframe>
-</div>
-    <div class="top-nav">
-        <div class="logo-group">
-            <img src="school-logo.png" alt="Twaabane Logo" class="school-badge">
-            <span class="school-name">Twaabane Primary School</span>
-        </div>
-          <nav class="utility-links">
-             <button class="btn-store">Sign In</button>
-          </nav>
-    </div>
-    <!----
-    <nav class="main-nav">
-    <div class="menu-toggle" id="mobile-menu">
-        <i class="fas fa-bars" id="hamburger"></i>
-        <i class="fas fa-times" id="close-btn" style="display: none;"></i>
-    </div>
+  <div id="formOverlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:9999; align-items:center; justify-content:center;">
+    <button id="closeForm" aria-label="Close enrollment form" style="position:absolute; right:18px; top:18px; color:white; font-size:30px; background:none; border:none; cursor:pointer;">&times;</button>
+    <iframe src="enrollment-form.html" title="Enrollment Form" style="width:90%; max-width:1000px; height:80%; border-radius:10px; border:none; background:#fff"></iframe>
+  </div>
 
-    <div class="nav-links-container" id="nav-menu">
-        <div class="nav-item"><a href="index.html">Home</a></div>
-        <div class="nav-item"><a href="about.html">About Us</a></div>
-        <div class="nav-item"><a href="academics.html">Academics</a></div>
-        <div class="nav-item"><a href="admissions.html">Admissions</a></div>
-        <div class="nav-item"><a href="contact.html">Contact</a></div>
-    </div>
-    </nav>
-    ---->
-    <nav class="main-nav">
-       <div class="menu-toggle" id="mobile-menu">
-           <i class="fas fa-bars" id="hamburger"></i>
-           <i class="fas fa-times" id="close-btn" style="display: none;"></i>
-       </div>        
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="aboutusedit.html">About Us</a>
-            <a href="academicsedit.html">Academics</a>
-            <a href="admissionsedit.html">Admissions</a>
-            <a href="contactedit.html">Contact</a>
-        </div>
-    </nav>
-   <!---- 
-    <header class="hero reveal">
-        <div class="bg-shape yellow-corner"></div>
-        <div class="bg-shape blue-overlay"></div>
-        
-        <div class="hero-content">
-            <div class="hero-text-left">
-                <p class="subtitle">Try your kids to school</p>
-                <h1>The lead uniforms!</h1>
-                <div class="floating-image-card">
-                    <img src="IMG-20251106-WA0066.jpg" alt="Students">
-                </div>
-            </div>
+  <div class="top-strip">
+    <div class="container">
+      <div class="brand-inline">
+        <img src="school-logo.png" alt="Twaabane Logo" class="school-badge">
+        <div class="school-title">Twaabane Primary School</div>
+      </div>
 
-            <div class="hero-card-right">
-                <div class="blob-shape">
-                    <h2>New to our school</h2>
-                    <p>Learn more about our offerings and how we can help your child succeed in their educational journey.</p>
-                    
-                    <a href="enrollment.html" class="btn-yellow">Enroll Now</a>
-                </div>
-            </div>
-        </div>
-    </header>
-    ----->
+      <div style="display:flex;align-items:center;gap:10px">
+        <nav class="top-utilities" aria-label="Utilities">
+          <button class="signin-btn" onclick="location.href='signin.html'">Sign In</button>
+        </nav>
 
-<section class="hero-session">
-  <div class="hero-overlay">
-    <div class="hero-content">
-      <h1>Unlock Your Child's Future</h1>
-      <p>Inspiring minds, building leaders, fostering success — join us</p>
-      <a href="enrollment.html" class="cta-button">Enroll Now</a>
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open navigation">
+          <i class="fas fa-bars" id="hamburgerIcon" aria-hidden="true"></i>
+          <i class="fas fa-times" id="closeIcon" aria-hidden="true" style="display:none"></i>
+        </button>
+      </div>
     </div>
   </div>
-</section>
 
+  <nav class="main-nav" role="navigation" aria-label="Primary">
+    <div class="nav-container container">
+      <div class="nav-left-space" aria-hidden="true">
+        <div class="mini-box"></div>
+      </div>
 
+      <div class="nav-links right-shift" id="desktopNav">
+        <a href="index.html">Home</a>
+        <a href="aboutusedit.html">About Us</a>
+        <a href="academicsedit.html">Academics</a>
+        <a href="admissionsedit.html">Admissions</a>
+        <a href="contactedit.html">Contact</a>
+      </div>
+    </div>
 
-<section class="subjects-section">
-    <div class="container">
+    <div id="mobileNav" class="mobile-nav-panel" aria-hidden="true" style="position:relative;z-index:30;">
+      <div class="mobile-links container" role="menu" aria-label="Mobile primary">
+        <a href="index.html" role="menuitem">Home</a>
+        <a href="aboutusedit.html" role="menuitem">About Us</a>
+        <a href="academicsedit.html" role="menuitem">Academics</a>
+        <a href="admissionsedit.html" role="menuitem">Admissions</a>
+        <a href="contactedit.html" role="menuitem">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero-split">
+    <div class="hero-left">
+    </div>
+
+    <div class="hero-right">
+      <div class="mission-blob">
+        <h2>MISSION STATEMENT</h2>
+        <p>To facilitate the provision of education that enhances empowerment of the communities to think in other terms and embraces diversity for gender equality and social inclusion.</p>
+        <p>Twaabane Primary School's priority is to produce individuals who are self-reliant and guided by the Christian values of faith, love, and prophetic voice. The goal is to empower all learners to become responsible God fearing citizens.</p>
+        <div class="cta-wrap" style="text-align: center; margin-top: 20px;">
+          <a href="enrollment.html" class="cta-button-yellow">Enroll Now</a>
+       </div>
+      </div>
+    </div>
+
+   <div class="floating-image-card">
+      <img src="Grade 1.jpg" alt="Students in Uniform">
+    </div>
+
+  </header>
+
+  <main>
+    <section class="subjects-section">
+      <div class="container">
         <h2 class="section-title">Our Curriculum</h2>
         <div class="subjects-grid">
-            
-            <div class="subject-card">
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=500" alt="English Language">
-                </div>
-                <div class="card-content">
-                    <i class="fas fa-book-open"></i>
-                    <h3>English Language</h3>
-                </div>
-            </div>
+          <div class="subject-card">
+            <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=500" alt="English Language"></div>
+            <div class="card-content"><i class="fas fa-book-open"></i><h3>English Language</h3></div>
+          </div>
 
-            <div class="subject-card">
-                <div class="image-wrapper">
-                    <img src="Mathematics.jpeg" alt="Mathematics">
-                </div>
-                <div class="card-content">
-                    <i class="fas fa-calculator"></i>
-                    <h3>Mathematics</h3>
-                </div>
-            </div>
+          <div class="subject-card">
+            <div class="image-wrapper"><img src="Mathematics.jpeg" alt="Mathematics"></div>
+            <div class="card-content"><i class="fas fa-calculator"></i><h3>Mathematics</h3></div>
+          </div>
 
-            <div class="subject-card">
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1530210124550-912dc1381cb8?q=80&w=500" alt="Science and Technology">
-                </div>
-                <div class="card-content">
-                    <i class="fas fa-microscope"></i>
-                    <h3>Science & Technology</h3>
-                </div>
-            </div>
+          <div class="subject-card">
+            <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1530210124550-912dc1381cb8?q=80&w=500" alt="Science and Technology"></div>
+            <div class="card-content"><i class="fas fa-microscope"></i><h3>Science & Technology</h3></div>
+          </div>
 
-            <div class="subject-card">
-                <div class="image-wrapper">
-                    <img src="Tonga.webp" alt="Local Languages">
-                </div>
-                <div class="card-content">
-                    <i class="fas fa-comments"></i>
-                    <h3>ChiTonga / IsiNdebele</h3>
-                </div>
-            </div>
+          <div class="subject-card">
+            <div class="image-wrapper"><img src="Tonga.webp" alt="Local Languages"></div>
+            <div class="card-content"><i class="fas fa-comments"></i><h3>ChiTonga / IsiNdebele</h3></div>
+          </div>
 
-            <div class="subject-card">
-                <div class="image-wrapper">
-                    <img src="Social Science.jpeg" alt="Social Science">
-                </div>
-                <div class="card-content">
-                    <i class="fas fa-globe-africa"></i>
-                    <h3>Social Science</h3>
-                </div>
-            </div>
+          <div class="subject-card">
+            <div class="image-wrapper"><img src="Social Science.jpeg" alt="Social Science"></div>
+            <div class="card-content"><i class="fas fa-globe-africa"></i><h3>Social Science</h3></div>
+          </div>
 
-            <div class="subject-card">
-                <div class="image-wrapper">
-                    <img src="PE and Arts.jpeg" alt="PE and Arts">
-                </div>
-                <div class="card-content">
-                    <i class="fas fa-palette"></i>
-                    <h3>PE and Arts</h3>
-                </div>
-            </div>
-
+          <div class="subject-card">
+            <div class="image-wrapper"><img src="PE and Arts.jpeg" alt="PE and Arts"></div>
+            <div class="card-content"><i class="fas fa-palette"></i><h3>PE and Arts</h3></div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section class="classes-section">
-    <div class="container">
+    <section class="classes-section">
+      <div class="container">
         <h2 class="section-title">Our Grade Levels</h2>
         <div class="class-grid">
-            <div class="class-card">
-                <div class="image-wrapper">
-                    <img src="Grade 1.jpg" alt="Grade 1 Students">
-                </div>
-                <div class="card-content">
-                    <h3>Grade 1</h3>
-                    <p>Fostering curiosity and foundational skills in a warm, engaging classroom environment.</p>
-                </div>
-            </div>
-            
-            <div class="class-card">
-                <div class="image-wrapper">
-                    <img src="Grade 2.jpg" alt="Grade 2 Students">
-                </div>
-                <div class="card-content">
-                    <h3>Grade 2</h3>
-                    <p>Strengthening literacy and independent thinking through collaborative learning.</p>
-                </div>
-            </div>
+          <div class="class-card">
+            <div class="image-wrapper"><img src="Grade 1.jpg" alt="Grade 1 Students"></div>
+            <div class="card-content"><h3>Grade 1</h3><p>Fostering curiosity and foundational skills in a warm, engaging classroom environment.</p></div>
+          </div>
+          <div class="class-card">
+            <div class="image-wrapper"><img src="Grade 2.jpg" alt="Grade 2 Students"></div>
+            <div class="card-content"><h3>Grade 2</h3><p>Strengthening literacy and independent thinking through collaborative learning.</p></div>
+          </div>
+          <div class="class-card">
+            <div class="image-wrapper"><img src="Grade 3.jpg" alt="Grade 3 Students"></div>
+            <div class="card-content"><h3>Grade 3</h3><p>Developing critical problem-solving skills and creative expression.</p></div>
+          </div>
+          <div class="class-card">
+            <div class="image-wrapper"><img src="Grade 4.jpg" alt="Grade 4 Students"></div>
+            <div class="card-content"><h3>Grade 4</h3><p>Encouraging academic inquiry and expanding conceptual understanding across diverse subjects.</p></div>
+          </div>
+          <div class="class-card">
+            <div class="image-wrapper"><img src="Grade 5.jpg" alt="Grade 5 Students"></div>
+            <div class="card-content"><h3>Grade 5</h3><p>Cultivating leadership qualities and advanced research skills in a supportive environment.</p></div>
+          </div>
+          <div class="class-card">
+            <div class="image-wrapper"><img src="Grade 6.jpg" alt="Grade 6 Students"></div>
+            <div class="card-content"><h3>Grade 6</h3><p>Preparing students for the transition to middle school with a focus on autonomy and excellence.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="class-card">
-                <div class="image-wrapper">
-                    <img src="Grade 3.jpg" alt="Grade 3 Students">
-                </div>
-                <div class="card-content">
-                    <h3>Grade 3</h3>
-                    <p>Developing critical problem-solving skills and creative expression.</p>
-                </div>
-            </div>
-            <div class="class-card">
-                <div class="image-wrapper">
-                    <img src="Grade 4.jpg" alt="Grade 3 Students">
-                </div>
-                <div class="card-content">
-                    <h3>Grade 4</h3>
-                    <p>Encouraging academic inquiry and expanding conceptual understanding across diverse subjects.</p>
-                </div>
-            </div>
-            <div class="class-card">
-                <div class="image-wrapper">
-                    <img src="Grade 5.jpg" alt="Grade 3 Students">
-                </div>
-                <div class="card-content">
-                    <h3>Grade 5</h3>
-                    <p>Cultivating leadership qualities and advanced research skills in a supportive environment.</p>
-                </div>
-            </div>
-            <div class="class-card">
-                <div class="image-wrapper">
-                    <img src="Grade 6.jpg" alt="Grade 3 Students">
-                </div>
-                <div class="card-content">
-                    <h3>Grade 6</h3>
-                    <p>Preparing students for the transition to middle school with a focus on autonomy and excellence.</p>
-                </div>
-            </div>
-            </div>
-    </div>
-</section>
-
-<!----TESTIMONIALS-------------->
-<section class="testimonials-section">
-    <div class="container">
+    <section class="testimonials-section">
+      <div class="container">
         <h2 class="section-title">What Our Community Says</h2>
-        
         <div class="testimonial-slider">
-            <div class="testimonial-track">
-                <div class="testimonial-card">
-                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <p class="message">"Twaabane Primary has transformed my child's confidence. The teachers are dedicated and the environment is truly supportive."</p>
-                    <div class="testimonial-footer">
-                        <img src="https://i.pravatar.cc/150?u=1" alt="Parent 1" class="profile-pic">
-                        <div class="parent-info">
-                            <h4>Mrs. Thandiwe Zulu</h4>
-                            <span>Grade 4 Parent</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <p class="message">"The curriculum is robust and the focus on local languages makes us feel our culture is valued. Highly recommended!"</p>
-                    <div class="testimonial-footer">
-                        <img src="https://i.pravatar.cc/150?u=2" alt="Parent 2" class="profile-pic">
-                        <div class="parent-info">
-                            <h4>Mr. David Banda</h4>
-                            <span>Grade 2 Parent</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <p class="message">"Seeing the progress in Science and Tech has been amazing. My daughter loves going to school every single day."</p>
-                    <div class="testimonial-footer">
-                        <img src="https://i.pravatar.cc/150?u=3" alt="Parent 3" class="profile-pic">
-                        <div class="parent-info">
-                            <h4>Ms. Chenai Moyo</h4>
-                            <span>Grade 6 Parent</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <p class="message">"Twaabane Primary has transformed my child's confidence. The teachers are dedicated and the environment is truly supportive."</p>
-                    <div class="testimonial-footer">
-                        <img src="https://i.pravatar.cc/150?u=1" alt="Parent 1" class="profile-pic">
-                        <div class="parent-info">
-                            <h4>Mrs. Thandiwe Zulu</h4>
-                            <span>Grade 4 Parent</span>
-                        </div>
-                    </div>
-                </div>
+          <div class="testimonial-track" id="testimonialTrack">
+            <div class="testimonial-card">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p class="message">"Twaabane Primary has transformed my child's confidence. The teachers are dedicated and the environment is truly supportive."</p>
+              <div class="testimonial-footer">
+                <img src="profpic.png" alt="Parent 1" class="profile-pic">
+                <div class="parent-info"><h4>Elina Munkombwe</h4><span>Grade 4 Parent</span></div>
+              </div>
             </div>
+
+            <div class="testimonial-card">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p class="message">"The curriculum is robust and the focus on local languages makes us feel our culture is valued. Highly recommended!"</p>
+              <div class="testimonial-footer">
+                <img src="profpic.png" alt="Parent 2" class="profile-pic">
+                <div class="parent-info"><h4>Stephen Muzamba</h4><span>Grade 2 Parent</span></div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p class="message">"Seeing the progress in Science and Tech has been amazing. My daughter loves going to school every single day."</p>
+              <div class="testimonial-footer">
+                <img src="profpic.png" alt="Parent 3" class="profile-pic">
+                <div class="parent-info"><h4>Maltida Mwiinde</h4><span>Grade 5 Parent</span></div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-container container">
+      <div class="footer-div school-info">
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="school-logo.png" alt="Logo" class="footer-logo">
+          <h3 style="margin:0;color:#fff">Twaabane Primary School</h3>
+        </div>
+        <p style="color:rgba(219,234,254,0.9);margin-top:8px">Providing quality education and fostering a lead-ready generation. We are committed to excellence in academics, sports, and character building.</p>
+      </div>
+
+      <div class="footer-div quick-links">
+        <h4>Quick Navigation</h4>
+        <ul>
+          <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="aboutusedit.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+          <li><a href="admissionsedit.html"><i class="fas fa-user-plus"></i> Admissions</a></li>
+          <li><a href="academicsedit.html"><i class="fas fa-book"></i> Academics</a></li>
+          <li><a href="contactedit.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-div social-links">
+        <h4>Connect With Us</h4>
+        <div class="social-grid" style="display:flex;flex-direction:column;gap:8px">
+          <a href="#" class="social-item"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a href="#" class="social-item"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="#" class="social-item"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          <a href="#" class="social-item"><i class="fab fa-twitter"></i> Twitter</a>
+        </div>
+      </div>
     </div>
-</section> 
-    
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<!---------------FOOTER----------------->
-<footer class="main-footer">
-    <div class="footer-container">
-        <div class="footer-div school-info">
-            <div class="footer-logo-area">
-                <img src="school-logo.png" alt="Logo" class="footer-logo"> <h3>Twaabane Primary School</h3>
-            </div>
-            <p>Providing quality education and fostering a lead-ready generation. We are committed to excellence in academics, sports, and character building.</p>
-        </div>
-
-        <div class="footer-div quick-links">
-            <h4>Quick Navigation</h4>
-            <ul>
-                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="aboutusedit.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-                <li><a href="admissionsedit.html"><i class="fas fa-user-plus"></i> Admissions</a></li>
-                <li><a href="academicsedit.html"><i class="fas fa-book"></i> Academics</a></li>
-                <li><a href="contactedit.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-div social-links">
-            <h4>Connect With Us</h4>
-            <div class="social-grid">
-                <a href="https://www.facebook.com/profile.php?id=61584482721749&__cft__[0]=AZa_BGlPetQp07ZWR9uRXzoqTPtZRcSlNPxASCpFkh4olH3RCmIQ1l7iPVEd7vpgW1ZRrYiOgNHhVxr6fVRDkNOWHUEe3rXUJUxqBfGvbOGjKhB79_YoftOL7hanbpZWCz0eaPoHSOvKKTwuvn17D8UGhZ1z8NCZSLDfFNGVIU-I1Yi3Fc56aI1m0i0NTI72Ts_qg959wJuXMZrvv68EkFVX&__tn__=-UC%2CP-R" class="social-item"><i class="fab fa-facebook-f"></i> Facebook</a>
-                <a href="#" class="social-item"><i class="fab fa-instagram"></i> Instagram</a>
-                <a href="#" class="social-item"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="#" class="social-item"><i class="fab fa-twitter"></i> Twitter</a>
-            </div>
-        </div> 
-    </div>
     <div class="footer-bottom">
-        <p>&copy; 2026 Twaabane Primary School. All Rights Reserved.</p>
+      <p>&copy; 2026 Twaabane Primary School. All Rights Reserved.</p>
     </div>
-</footer>
+  </footer>
+
+  <script>
+    (function(){
+      // INFINITE SLIDER LOGIC
+      const track = document.getElementById('testimonialTrack');
+      if(track) {
+          const cards = track.innerHTML;
+          track.innerHTML = cards + cards + cards;
+      }
+
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileNav = document.getElementById('mobileNav');
+      const hamburgerIcon = document.getElementById('hamburgerIcon');
+      const closeIcon = document.getElementById('closeIcon');
+
+      function openMenu(){
+        mobileNav.classList.add('open');
+        mobileNav.setAttribute('aria-hidden','false');
+        menuToggle.setAttribute('aria-expanded','true');
+        if(hamburgerIcon) hamburgerIcon.style.display='none';
+        if(closeIcon) closeIcon.style.display='inline-block';
+      }
+      function closeMenu(){
+        mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden','true');
+        menuToggle.setAttribute('aria-expanded','false');
+        if(hamburgerIcon) hamburgerIcon.style.display='inline-block';
+        if(closeIcon) closeIcon.style.display='none';
+      }
+
+      if(menuToggle){
+        menuToggle.addEventListener('click', function(e){
+          const isOpen = mobileNav.classList.contains('open');
+          if(isOpen) closeMenu(); else openMenu();
+        });
+      }
+
+      if(mobileNav){
+        mobileNav.addEventListener('click', function(e){
+          if(e.target.tagName === 'A') closeMenu();
+        });
+      }
+
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape') closeMenu();
+      });
+
+      document.addEventListener('click', function(e){
+        const isSmall = window.matchMedia('(max-width:979px)').matches;
+        const withinToggle = menuToggle && menuToggle.contains(e.target);
+        const withinPanel = mobileNav && mobileNav.contains(e.target);
+        if(isSmall && !withinToggle && !withinPanel){
+          closeMenu();
+        }
+      });
+
+      const formOverlay = document.getElementById('formOverlay');
+      const closeForm = document.getElementById('closeForm');
+      if(closeForm){
+        closeForm.addEventListener('click', ()=> formOverlay.style.display='none');
+      }
+    })();
+  </script>
 </body>
 </html>
-
-
-
-
-
-
