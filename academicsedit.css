@@ -195,6 +195,23 @@ ul li::before {
     background: white;
 }
 
+/* Responsive Image for School Excursion */
+.excursion-image {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.excursion-image img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+
 /* Entrance Animations */
 .reveal {
     animation: fadeInUp 0.8s ease forwards;
@@ -320,4 +337,143 @@ ul li::before {
     .quick-links ul li a, .social-item {
         justify-content: center;
     }
+}
+
+/* ---------------------------
+   Responsive navigation toggle
+   (CSS-only using checkbox hack)
+   --------------------------- */
+
+/* Hidden checkbox (off-screen) */
+.nav-toggle {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Menu button (label) */
+.nav-toggle-label {
+  display: none; /* shown on small screens via media query */
+  position: absolute;
+  right: 5%;
+  top: 14px;
+  width: 44px;
+  height: 44px;
+  background: var(--navy);
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1100;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: background 0.2s ease;
+}
+
+/* inner icon displayed by the label (three bars) */
+.nav-toggle-label .menu-icon,
+.nav-toggle-label .menu-icon::before,
+.nav-toggle-label .menu-icon::after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--yellow);
+  position: relative;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  border-radius: 1px;
+}
+
+/* create top & bottom bars */
+.nav-toggle-label .menu-icon::before,
+.nav-toggle-label .menu-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+.nav-toggle-label .menu-icon::before { top: -6px; }
+.nav-toggle-label .menu-icon::after  { top: 6px; }
+
+/* Mobile breakpoint: hide inline nav-links and show toggle */
+@media (max-width: 900px) {
+  .main-nav {
+    padding: 12px 5%;
+    position: relative;
+  }
+
+  /* hide the inline links initially */
+  .nav-links {
+    display: none;
+    width: 100%;
+    background: var(--navy);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    transform-origin: top;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    overflow: hidden;
+    z-index: 1050;
+  }
+
+  /* stack links vertically inside dropdown */
+  .nav-links a {
+    display: block;
+    padding: 14px 20px;
+    margin: 0;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    text-align: left;
+  }
+
+  /* show menu button */
+  .nav-toggle-label {
+    display: flex;
+  }
+
+  /* When checkbox checked, show nav-links with sliding animation */
+  .nav-toggle:checked + .nav-toggle-label + .main-nav .nav-links,
+  .nav-toggle:checked ~ .main-nav .nav-links {
+    display: block;
+    animation: navDrop 0.32s ease forwards;
+  }
+
+  /* Transform the menu icon into an X when checked */
+  .nav-toggle:checked + .nav-toggle-label .menu-icon {
+    background: transparent;
+  }
+  .nav-toggle:checked + .nav-toggle-label .menu-icon::before {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .nav-toggle:checked + .nav-toggle-label .menu-icon::after {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  /* Slightly reduce hero height for small screens */
+  .academics-hero {
+    height: 240px;
+  }
+
+  /* reduce logo size a bit */
+  .school-badge { height: 42px; }
+  .school-name { font-size: 1rem; }
+}
+
+/* slide down animation for nav dropdown */
+@keyframes navDrop {
+  0% { opacity: 0; transform: translateY(-6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Accessibility: focus styles for the label when keyboard focused */
+.nav-toggle-label:focus {
+  outline: 2px solid rgba(255,210,0,0.35);
+  outline-offset: 3px;
+}
+
+/* Ensure nav-links are visible again on wider screens */
+@media (min-width: 901px) {
+  .nav-toggle-label { display: none; }
+  .nav-links { display: block !important; position: static; box-shadow: none; background: transparent; }
+  .nav-links a { padding: 0; margin-left: 30px; display: inline-block; border-top: none; }
 }
