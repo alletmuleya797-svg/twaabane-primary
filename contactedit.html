@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Twaabane Primary School</title>
+    <title>Contact Us | Mwaabane Primary School</title>
     <link rel="stylesheet" href="contactedit.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" href="school-logo.png" type="image/png">
-    <meta name="description" content="Get in touch with Twaabane Primary School. Find our official contact numbers, email address, and physical location in Binga. We are here to answer your questions regarding admissions and school activities.">
 </head>
 <body>
 
@@ -16,12 +14,16 @@
             <img src="school-logo.png" alt="Twaabane Logo" class="school-badge">
             <span class="school-name">Twaabane Primary School</span>
         </div>
-        <nav class="utility-links">
-            <a href="#">Follow Us</a>
-            <a href="#">Contact</a>
-            <button class="btn-store">Fray Store</button>
-        </nav>
+
     </div>
+
+    <!-- Hidden checkbox used for CSS-only toggle -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+
+    <!-- Menu button (label toggles the hidden checkbox) -->
+    <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true">
+        <span class="menu-icon" aria-hidden="true"></span>
+    </label>
 
     <nav class="main-nav">
         <div class="nav-links">
@@ -109,6 +111,4 @@
     </div>
 </footer>
 </body>
-
 </html>
-
