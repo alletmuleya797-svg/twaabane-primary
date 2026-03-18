@@ -13,14 +13,12 @@
             --white: #ffffff;
             --bg-gray: #f0f2f5;
             --text-dark: #333;
+            --error-red: #d32f2f;
+            --success-green: #2e7d32;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -32,211 +30,70 @@
             padding: 20px;
         }
 
-        .login-container {
-            width: 100%;
-            max-width: 450px;
-            animation: fadeIn 0.8s ease;
-        }
+        .login-container { width: 100%; max-width: 450px; animation: fadeIn 0.8s ease; }
 
-        /* Header Styles */
-        .login-header {
-            text-align: center;
-            color: var(--white);
-            margin-bottom: 30px;
-        }
+        .login-header { text-align: center; color: var(--white); margin-bottom: 30px; }
 
         .login-logo {
-            width: 80px;
-            height: 80px;
-            background: white;
-            border-radius: 50%;
-            padding: 10px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 80px; height: 80px; background: white; border-radius: 50%;
+            padding: 10px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             object-fit: contain;
         }
 
         .login-header h1 {
-            font-size: 1.8rem;
-            color: var(--gold);
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 1.8rem; color: var(--gold); margin-bottom: 5px;
+            text-transform: uppercase; letter-spacing: 1px;
         }
 
-        .login-header p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Card & Tabs */
         .login-card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden;
+            background: var(--white); padding: 40px; border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3); position: relative;
         }
 
-        .tabs {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-            position: relative;
-            border-bottom: 2px solid #eee;
-        }
-
-        .tab-label {
-            flex: 1;
-            text-align: center;
-            padding: 12px 5px;
-            cursor: pointer;
-            font-weight: 600;
-            color: #888;
-            transition: var(--transition);
+        /* Styled Message Box */
+        #auth-message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
             font-size: 0.9rem;
-            z-index: 1;
+            display: none; /* Hidden by default */
+            text-align: center;
+            font-weight: 500;
         }
 
-        .tab-indicator {
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            height: 3px;
-            width: 33.33%;
-            background: var(--navy);
-            transition: var(--transition);
-            border-radius: 10px 10px 0 0;
-        }
+        .error-msg { background: #ffebee; color: var(--error-red); border: 1px solid #ffcdd2; }
+        .success-msg { background: #e8f5e9; color: var(--success-green); border: 1px solid #c8e6c9; }
 
-        /* Tab Switching Logic */
+        .tabs { display: flex; justify-content: space-between; margin-bottom: 30px; position: relative; border-bottom: 2px solid #eee; }
+        .tab-label { flex: 1; text-align: center; padding: 12px 5px; cursor: pointer; font-weight: 600; color: #888; transition: var(--transition); font-size: 0.9rem; }
+        .tab-indicator { position: absolute; bottom: -2px; left: 0; height: 3px; width: 33.33%; background: var(--navy); transition: var(--transition); border-radius: 10px 10px 0 0; }
+
         input[type="radio"] { display: none; }
-
         #student:checked ~ .tabs .tab-indicator { left: 0; }
         #staff:checked ~ .tabs .tab-indicator { left: 33.33%; }
         #admin:checked ~ .tabs .tab-indicator { left: 66.66%; }
 
         #student:checked ~ .tabs label[for="student"],
         #staff:checked ~ .tabs label[for="staff"],
-        #admin:checked ~ .tabs label[for="admin"] {
-            color: var(--navy);
-        }
+        #admin:checked ~ .tabs label[for="admin"] { color: var(--navy); }
 
-        /* Form Content */
-        .input-group {
-            position: relative;
-            margin-bottom: 20px;
-        }
+        .input-group { position: relative; margin-bottom: 20px; }
+        .input-group i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #aaa; }
+        .input-group input { width: 100%; padding: 15px 15px 15px 45px; border: 1px solid #ddd; border-radius: 10px; outline: none; }
+        .input-group input:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(0, 45, 98, 0.1); }
 
-        .input-group i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #aaa;
-            transition: var(--transition);
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 15px 15px 15px 45px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            outline: none;
-            transition: var(--transition);
-            font-size: 1rem;
-        }
-
-        .input-group input:focus {
-            border-color: var(--navy);
-            box-shadow: 0 0 0 3px rgba(0, 45, 98, 0.1);
-        }
-
-        .input-group input:focus + i {
-            color: var(--navy);
-        }
-
-        .form-options {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            margin-bottom: 25px;
-            color: #666;
-        }
-
-        .form-options a {
-            color: var(--navy);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .form-options a:hover {
-            text-decoration: underline;
-        }
-
-        /* Submit Button */
         .btn-login {
-            width: 100%;
-            padding: 16px;
-            background: var(--gold);
-            border: none;
-            border-radius: 10px;
-            color: var(--navy);
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            transition: var(--transition);
+            width: 100%; padding: 16px; background: var(--gold); border: none; border-radius: 10px;
+            color: var(--navy); font-weight: bold; cursor: pointer; display: flex;
+            align-items: center; justify-content: center; gap: 12px; transition: var(--transition);
         }
 
-        .btn-login:hover {
-            background: #f2cc00;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
-        }
+        .btn-login:disabled { background: #ccc; cursor: not-allowed; }
 
-        .btn-login i {
-            transition: transform 0.3s ease;
-        }
+        .login-footer { text-align: center; margin-top: 25px; }
+        .login-footer a { color: var(--white); text-decoration: none; opacity: 0.8; }
 
-        .btn-login:hover i {
-            transform: translateX(5px);
-        }
-
-        .login-footer {
-            text-align: center;
-            margin-top: 25px;
-        }
-
-        .login-footer a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.9rem;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        .login-footer a:hover {
-            opacity: 1;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 480px) {
-            .login-card { padding: 30px 20px; }
-            .tab-label { font-size: 0.8rem; }
-            .login-header h1 { font-size: 1.5rem; }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -245,46 +102,35 @@
         <div class="login-header">
             <img src="school-logo.png" alt="Twaabane Logo" class="login-logo">
             <h1>Twaabane Primary</h1>
-            <p>Select your portal and sign in to continue</p>
+            <p>Portal Sign In</p>
         </div>
 
         <div class="login-card">
+            <div id="auth-message"></div>
+
             <input type="radio" name="login-role" id="student" checked>
             <input type="radio" name="login-role" id="staff">
             <input type="radio" name="login-role" id="admin">
 
             <div class="tabs">
-                <label for="student" class="tab-label">
-                    <i class="fas fa-user-graduate"></i><br>Student
-                </label>
-                <label for="staff" class="tab-label">
-                    <i class="fas fa-chalkboard-teacher"></i><br>Staff
-                </label>
-                <label for="admin" class="tab-label">
-                    <i class="fas fa-user-shield"></i><br>Admin
-                </label>
+                <label for="student" class="tab-label"><i class="fas fa-user-graduate"></i><br>Student</label>
+                <label for="staff" class="tab-label"><i class="fas fa-chalkboard-teacher"></i><br>Staff</label>
+                <label for="admin" class="tab-label"><i class="fas fa-user-shield"></i><br>Admin</label>
                 <div class="tab-indicator"></div>
             </div>
 
-            <form action="#" class="login-form">
+            <form class="login-form">
                 <div class="input-group">
-                    <input type="text" placeholder="Username or ID Number" required>
-                    <i class="fas fa-user"></i>
+                    <input type="email" id="email" placeholder="Email Address" required>
+                    <i class="fas fa-envelope"></i>
                 </div>
                 
                 <div class="input-group">
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" id="password" placeholder="Password" required>
                     <i class="fas fa-lock"></i>
                 </div>
-                
-                <div class="form-options">
-                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                        <input type="checkbox"> Remember me
-                    </label>
-                    <a href="#">Reset Password</a>
-                </div>
 
-                <button type="submit" class="btn-login">
+                <button type="submit" class="btn-login" id="submit-btn">
                     <span>SIGN IN</span>
                     <i class="fas fa-arrow-right"></i>
                 </button>
@@ -296,5 +142,75 @@
         </div>
     </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+    const _supabaseUrl = 'https://fikkzdvzhrrbdaeqoloz.supabase.co';
+    const _supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpa2t6ZHZ6aHJyYmRhZXFvbG96Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA5MDIxMDQsImV4cCI6MjA4NjQ3ODEwNH0.UCdrrtpDfDfPEis8LRidW_A9GTh2dxbpkBEQ8auZd7E';
+    const _supabase = supabase.createClient(_supabaseUrl, _supabaseKey);
+
+    const loginForm = document.querySelector('.login-form');
+    const messageBox = document.getElementById('auth-message');
+    const submitBtn = document.getElementById('submit-btn');
+
+    // Helper function to show styled messages
+    function showMessage(text, type) {
+        messageBox.textContent = text;
+        messageBox.className = type === 'error' ? 'error-msg' : 'success-msg';
+        messageBox.style.display = 'block';
+    }
+
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // UI Feedback
+        submitBtn.disabled = true;
+        submitBtn.querySelector('span').textContent = "VERIFYING...";
+        messageBox.style.display = 'none';
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const selectedRole = document.querySelector('input[name="login-role"]:checked').id;
+
+        // 1. Authenticate with Supabase Auth
+        const { data, error } = await _supabase.auth.signInWithPassword({
+            email: email,
+            password: password,
+        });
+
+        if (error) {
+            showMessage(error.message, 'error');
+            submitBtn.disabled = false;
+            submitBtn.querySelector('span').textContent = "SIGN IN";
+            return;
+        }
+
+        // 2. Check metadata for role
+        const metadata = data.user.user_metadata;
+        const userRole = metadata.role ? metadata.role.toLowerCase() : '';
+
+        if (userRole !== selectedRole) {
+            showMessage(`Access Denied. This account is registered as ${userRole || 'Unknown'}.`, 'error');
+            submitBtn.disabled = false;
+            submitBtn.querySelector('span').textContent = "SIGN IN";
+            // Optional: Log them back out if role is wrong
+            await _supabase.auth.signOut();
+            return;
+        }
+
+        // 3. Success
+        showMessage(`Welcome back, ${metadata.full_name || 'User'}! Redirecting...`, 'success');
+        
+        setTimeout(() => {
+            if (userRole === 'staff') {
+                window.location.href = 'staff-portal.html';
+            } else if (userRole === 'admin') {
+                window.location.href = 'admin-dashboard.html';
+            } else {
+                window.location.href = 'student-portal.html';
+            }
+        }, 1500);
+    });
+</script>
 </body>
 </html>
