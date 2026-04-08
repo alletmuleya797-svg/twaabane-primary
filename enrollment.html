@@ -26,6 +26,16 @@
             cursor: pointer;
             margin-top: 20px;
         }
+        .declaration-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #555;
+            text-align: left;
+        }
+        .declaration-group input { width: auto; margin-top: 4px; }
     </style>
 </head>
 <body>
@@ -48,9 +58,15 @@
         <form id="enrollmentForm">
             <h3>Student Enrollment Form</h3>
             
-            <div class="input-group">
-                <label>Student Full Name</label>
-                <input type="text" id="fullName" placeholder="Enter full name" required>
+            <div class="row">
+                <div class="input-group">
+                    <label>First Name</label>
+                    <input type="text" id="firstName" placeholder="First Name" required>
+                </div>
+                <div class="input-group">
+                    <label>Last Name</label>
+                    <input type="text" id="lastName" placeholder="Last Name" required>
+                </div>
             </div>
 
             <div class="row">
@@ -64,24 +80,61 @@
                         <option value="">Select</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
-                         
                     </select>
                 </div>
             </div>
 
+            <div class="row">
+                <div class="input-group">
+                    <label>Applying for Grade</label>
+                    <select id="grade" required>
+                        <option value="">Select Grade</option>
+                        <option value="Grade 1">Grade 1</option>
+                        <option value="Grade 2">Grade 2</option>
+                        <option value="Grade 3">Grade 3</option>
+                        <option value="Grade 4">Grade 4</option>
+                        <option value="Grade 5">Grade 5</option>
+                        <option value="Grade 6">Grade 6</option>
+                        <option value="Grade 7">Grade 7</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Enrollment Year</label>
+                    <input type="number" id="year" placeholder="2026" value="2026" required>
+                </div>
+            </div>
+
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
             <div class="input-group">
-                <label>Parent/Guardian Email</label>
-                <input type="email" id="email" placeholder="example@mail.com" required>
+                <label>Full Parent/Guardian Name</label>
+                <input type="text" id="parentName" placeholder="Enter parent/guardian full name" required>
+            </div>
+
+            <div class="row">
+                <div class="input-group">
+                    <label>Parent Phone Number</label>
+                    <input type="tel" id="parentPhone" placeholder="Phone Number" required>
+                </div>
+                <div class="input-group">
+                    <label>Parent/Guardian Email</label>
+                    <input type="email" id="email" placeholder="example@mail.com" required>
+                </div>
             </div>
 
             <div class="input-group">
                 <label>Home Address</label>
-                <textarea rows="3" id="address" placeholder="Enter address"></textarea>
+                <textarea rows="3" id="address" placeholder="Enter residential address" required></textarea>
             </div>
 
             <div class="file-upload-box">
                 <label>Upload Birth Certificate (PDF/Image)</label>
                 <input type="file" id="fileInput" accept="image/*,.pdf" required>
+            </div>
+
+            <div class="declaration-group">
+                <input type="checkbox" id="declaration" required>
+                <label for="declaration">I hereby declare that the information provided is true and correct, and I agree to abide by the terms, conditions, rules, and regulations of Twaabane Primary School.</label>
             </div>
 
             <button type="submit" id="submitBtn" class="btn-submit">
@@ -94,7 +147,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-    // Replace these with your actual credentials from Settings > API
     const SUPABASE_URL = 'https://fikkzdvzhrrbdaeqoloz.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpa2t6ZHZ6aHJyYmRhZXFvbG96Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA5MDIxMDQsImV4cCI6MjA4NjQ3ODEwNH0.UCdrrtpDfDfPEis8LRidW_A9GTh2dxbpkBEQ8auZd7E';
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -111,37 +163,46 @@
 
         const fileInput = document.getElementById('fileInput');
         const file = fileInput.files[0];
-        const fullName = document.getElementById('fullName').value;
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
 
         try {
-            // --- STEP A: UPLOAD FILE TO STORAGE ---
-            // We create a unique name using a timestamp to avoid overwriting
+
+            // --- STEP A: UPLOAD FILE ---
             const fileName = `${Date.now()}-${file.name}`;
             const { data: uploadData, error: uploadError } = await _supabase.storage
-                .from('StudentsCertificates')
-                .upload(fileName, file);
+            .from('StudentsCertificates')
+            .upload(fileName, file);
 
-            if (uploadError) throw uploadError;
+             if (uploadError) throw uploadError;
 
-            // Get the public URL for the file we just uploaded
-            const { data: publicUrlData } = _supabase.storage
-                .from('StudentsCertificates')
-                .getPublicUrl(fileName);
+             // Get the actual URL string
+             const { data: publicUrlData } = _supabase.storage
+            .from('StudentsCertificates')
+            .getPublicUrl(fileName);
+
+             // Define fileUrl here so Step B can see it
+             const fileUrl = publicUrlData.publicUrl;
             
-            const fileUrl = publicUrlData.publicUrl;
 
-            // --- STEP B: INSERT DATA INTO TABLE ---
+            // --- STEP B: INSERT DATA ---
             const { error: dbError } = await _supabase
                 .from('StudentEnrollment')
                 .insert([{ 
-                    "Student Name": fullName, // Matches your screenshot
-                    "DOB": document.getElementById('dob').value,
-                    "Gender": document.getElementById('gender').value,
-                    "Parent/Guardian email": document.getElementById('email').value, // Adjust to match your DB column
-                    "Address": document.getElementById('address').value,
-                    "Certificates Url": fileUrl
-                }]);
-
+                    "firstname": firstName,
+                    "lastname": lastName,
+                    "dob": document.getElementById('dob').value,
+                    "gender": document.getElementById('gender').value,
+                    "grade": document.getElementById('grade').value,
+                    "year": document.getElementById('year').value,
+                    "parentName": document.getElementById('parentName').value,
+                    "parentPhone": document.getElementById('parentPhone').value,
+                    "email": document.getElementById('email').value,
+                    "address": document.getElementById('address').value,
+                    "Certificates_Url": fileUrl,
+                    "Declaration": document.getElementById('declaration').checked
+                }])
+ 
             if (dbError) throw dbError;
 
             // --- STEP C: SUCCESS ---
@@ -159,10 +220,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
