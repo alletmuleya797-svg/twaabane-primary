@@ -1,747 +1,1328 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <meta name="description" content="Twaabane Primary School, located in Binga, is dedicated to nurturing young minds in a supportive and empowering environment. Explore our academic programs and enrollment information online.">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Twaabane Primary School</title>
+  <title>Twaabane Primary School | Binga Centre, Zimbabwe</title>
+  <link rel="icon" type="image/png" href="school-logo.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="description" content="Twaabane Primary School is a premier primary educational institution situated at Stand 1060, Silyambembe Suburbs, Binga Centre, Zimbabwe. Fostering holistic excellence from ECD to Grade 7, grounded in Christian values, gender equality, cultural heritage (ChiTonga & IsiNdebele), and self-reliance." />
+  <meta property="og:title" content="Twaabane Primary School | Binga Centre, Zimbabwe" />
+  <meta property="og:description" content="Nurturing tomorrow's leaders today through holistic primary education, Christian values, and community empowerment in Binga, Zimbabwe." />
+  <meta property="og:image" content="school-logo.png" />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* Reset / base */
-    :root{
-      --brand:#f6b51c; /* yellow */
-      --accent:#0b74d1;
-      --muted:#6b7280;
-      --bg:#ffffff;
-      --text:#0f172a;
-      --max-width:1200px;
-      --navy:#072b57;
-      --nav-link-hover: #f6b51c;
-      --footer-hover-glow: rgba(246,181,28,0.18);
-      --light-blue: #6A89CC; /* Periwinkle Blue */
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;height:auto;display:block}
-
-    /* Container helper */
-    .container{width:90%;max-width:var(--max-width);margin:0 auto}
-
-    /* ---------- UPDATED TOP AREA ---------- */
-
-    .top-strip{
-      background:var(--brand);
-      color:var(--navy);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:8px 0;
-    }
-    .top-strip .container{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand-inline{display:flex;align-items:center;gap:10px}
-    .brand-inline .school-badge{
-      width:40px;height:40px;border-radius:50%;background:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:var(--navy)
+    :root {
+      --brand: #f6b51c;        /* School Gold */
+      --brand-hover: #ffc94d;
+      --brand-glow: rgba(246, 181, 28, 0.35);
+      --navy: #072b57;         /* School Navy */
+      --navy-deep: #031b38;
+      --navy-light: #0d3d78;
+      --accent-blue: #6A89CC;  /* Periwinkle */
+      --light-surface: #f8fafc;
+      --white: #ffffff;
+      --text-main: #0f172a;
+      --text-sub: #475569;
+      --border-subtle: #e2e8f0;
+      --max-w: 1240px;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --radius-lg: 24px;
+      --shadow-sm: 0 4px 12px rgba(7, 43, 87, 0.05);
+      --shadow-md: 0 10px 25px rgba(7, 43, 87, 0.09);
+      --shadow-lg: 0 20px 45px rgba(7, 43, 87, 0.14);
     }
 
-    .brand-inline .school-title{font-weight:700;color:var(--navy);font-size:1rem}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      color: var(--text-main);
+      background-color: var(--light-surface);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .brand-font { font-family: 'Outfit', sans-serif; }
+    a { text-decoration: none; color: inherit; transition: all 0.25s ease; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { width: 92%; max-width: var(--max-w); margin: 0 auto; }
 
-    .top-utilities{display:flex;gap:12px;align-items:center}
-    .top-utilities a{color:var(--navy);font-weight:600;font-size:0.95rem}
-    .top-utilities .signin-btn{
-      background:var(--navy);color:var(--brand);padding:6px 12px;border-radius:8px;border:none;font-weight:700;cursor:pointer;
-      box-shadow:0 2px 6px rgba(7,20,40,0.08)
+    /* Animations & Transitions */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
-    /* Main nav bar (navy) */
-    .main-nav{
-      background:var(--navy);
-      color:#fff;
-      display:block;
-      position:relative;
+    @keyframes floatSoft {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
-    .main-nav .nav-container{
-      display:flex;
-      align-items:center;
-      padding:12px 0;
-      gap:12px;
-      position:relative;
-      justify-content:center;
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(246, 181, 28, 0.5); }
+      50% { box-shadow: 0 0 0 10px rgba(246, 181, 28, 0); }
     }
-
-    .nav-left-space{
-      width:240px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      visibility:visible;
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
-    .nav-left-space .mini-box{width:36px;height:36px;background:rgba(255,255,255,0.06);border-radius:8px}
-
-    /* Nav links: white by default, yellow hover */
-    .nav-links{
-      display:flex;
-      gap:18px;
-      align-items:center;
-      padding:6px 12px;
-      border-radius:10px;
-      font-weight:700;
-    }
-    .nav-links a{
-      color:#fff; /* white default */
-      padding:8px 12px;border-radius:8px;display:inline-block;
-      transition: background .18s, transform .12s, color .12s, box-shadow .18s;
-      position:relative;
-    }
-    /* hover: yellow text */
-    .nav-links a:hover{
-      color:var(--nav-link-hover);
-      transform:translateY(-3px);
-      text-decoration:none;
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .nav-links.right-shift{margin-left:auto;margin-right:8px}
-
-    /* Mobile toggle (hamburger) - default hidden, shown via media queries below */
-    /* UPDATED: rounded navy square toggle that immediately shows close icon when opened */
-    .menu-toggle{
-      display:none;
-      background:var(--navy);
-      color:#fff;
-      border:none;
-      padding:8px;
-      border-radius:10px;
-      cursor:pointer;
-      font-size:1.15rem;
-      width:52px;
-      height:52px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 6px 18px rgba(7,20,40,0.12);
-    }
-    .menu-toggle:focus{outline:3px solid rgba(246,181,28,0.18); outline-offset:3px; border-radius:10px}
-
-    /* Mobile nav panel */
-    .mobile-nav-panel{
-      display:none;
-      width:100%;
-      background:var(--navy);
-      color:#fff;
-      border-top:1px solid rgba(255,255,255,0.04);
-      box-shadow:0 8px 24px rgba(2,6,23,0.25);
-    }
-    .mobile-nav-panel .mobile-links{display:flex;flex-direction:column;padding:12px;gap:6px}
-    .mobile-nav-panel .mobile-links a{padding:12px;border-radius:8px;color:#fff;background:rgba(255,255,255,0.02);font-weight:700}
-    .mobile-nav-panel .mobile-links a:hover{color:var(--nav-link-hover); background: rgba(255,255,255,0.02)}
-
-    /* --- START UPDATED HERO STYLES --- */
-    /* REDUCED HERO HEIGHT ONLY */
-    .hero-split {
-      position: relative;
-      display: flex;
-      flex-direction: row !important;
-      flex-wrap: nowrap !important;
-      min-height: 320px; /* reduced from 400px to 320px */
-      background-color: var(--brand);
-      overflow: hidden;
-      width: 100%;
-    }
-
-    .hero-left {
-      flex: 1.2;
-      background-image: linear-gradient(rgba(106, 137, 204, 0.5), rgba(106, 137, 204, 0.5)), url('cover page final.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 36px 5% 60px 6%; /* tightened vertical padding */
-      z-index: 1;
-      min-width: 55%;
-    }
-    .hero-left h1 {
-      font-size: 2rem; /* slightly smaller to fit the reduced height */
-      color: var(--navy);
-      margin: 0;
-      line-height: 1.05;
-      font-weight: 900;
-    }
-
-    .hero-right {
-      flex: 0.8;
+    /* Floating WhatsApp Button */
+    .floating-wa-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 54px;
+      height: 54px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+    }
+    .floating-wa-btn:hover {
+      transform: scale(1.12);
+      box-shadow: 0 14px 30px rgba(37, 211, 102, 0.55);
+      color: #fff;
+    }
+
+    /* Top Strip */
+    .top-strip {
+      background: var(--navy-deep);
+      color: #e2e8f0;
+      font-size: 0.85rem;
+      padding: 8px 0;
+      border-bottom: 2px solid var(--brand);
+    }
+    .top-strip .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .top-left-contacts { display: flex; gap: 20px; align-items: center; }
+    .top-left-contacts span { display: inline-flex; align-items: center; gap: 7px; }
+    .top-left-contacts i { color: var(--brand); }
+    .top-right-links { display: flex; align-items: center; gap: 12px; }
+    .portal-chip {
+      background: rgba(246, 181, 28, 0.15);
+      border: 1px solid var(--brand);
+      color: var(--brand);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+    }
+    .portal-chip:hover {
+      background: var(--brand);
+      color: var(--navy);
+      transform: translateY(-1px);
+    }
+
+    /* Main Navigation */
+    .site-nav {
+      background: #ffffff;
+      box-shadow: 0 4px 20px rgba(7, 43, 87, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+    }
+    .school-identity {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .school-badge-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid var(--brand);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .school-identity:hover .school-badge-img { transform: rotate(5deg) scale(1.05); }
+    .school-title-text h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+    }
+    .school-title-text span {
+      font-size: 0.76rem;
+      color: var(--text-sub);
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links-wrap {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-links-wrap a {
+      padding: 8px 14px;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.94rem;
+      border-radius: var(--radius-sm);
       position: relative;
-      min-width: 45%;
     }
-
-    .mission-blob {
-      background: var(--navy);
-      color: white;
-      padding: 20px 28px; /* reduced padding */
-      border-radius: 60px 0 0 120px;
-      width: 130%;
-      z-index: 2;
-      box-shadow: -10px 10px 30px rgba(0,0,0,0.15);
+    .nav-links-wrap a:hover, .nav-links-wrap a.active {
+      background: rgba(7, 43, 87, 0.06);
+      color: var(--navy);
     }
-
-    .mission-blob h2 { font-size: 1.1rem; margin-bottom: 8px; text-align: center; color: var(--brand); }
-    .mission-blob p { font-size: 0.82rem; line-height: 1.35; margin-bottom: 8px; }
-
-    .floating-image-card {
+    .nav-links-wrap a.active::after {
+      content: '';
       position: absolute;
-      left: 10%;
-      bottom: 14px; /* slightly higher so it doesn't push section taller */
-      width: 32%; /* slightly smaller */
-      max-width: 360px;
-      z-index: 5;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 4px solid #fff;
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
+      bottom: 2px;
+      left: 14px;
+      right: 14px;
+      height: 3px;
+      background: var(--brand);
+      border-radius: 2px;
+    }
+    /* Updates Link Notification Badge */
+    .nav-links-wrap a.updates-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #ef4444;
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulseGlow 2s infinite;
     }
 
-    .floating-image-card img { height: 180px; width: 100%; object-fit: cover; }
-
-    .cta-button-yellow {
-      background-color: #f6b51c !important; /* Brand Yellow */
-      color: #072b57 !important;           /* Brand Navy */
-      padding: 10px 24px !important;
-      border-radius: 8px !important;
+    .nav-cta-btn {
+      background: var(--brand) !important;
+      color: var(--navy) !important;
       font-weight: 800 !important;
-      text-transform: none;
-      text-decoration: none !important;
-      display: inline-block !important;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      transition: transform 0.2s, background-color 0.2s;
-      border: none !important;
+      border-radius: 30px !important;
+      padding: 9px 22px !important;
+      box-shadow: 0 4px 14px var(--brand-glow);
+      margin-left: 6px;
+    }
+    .nav-cta-btn:hover {
+      background: #ffc94d !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px var(--brand-glow);
     }
 
-    .hero-right .mission-blob .cta-wrap a:hover {
-      background-color: #ffc94d !important;
-      transform: scale(1.05);
-      color: #072b57 !important;
-    }
-    /* --- END HERO ADJUSTMENTS --- */
-
-    /* Sections */
-.section-title {
-    font-size: 2.5rem !important; /* Significant increase for "Our Curriculum" etc. */
-    font-weight: 800 !important;   /* Extra bold for a professional look */
-    color: #072b57 !important;     /* School brand navy */
-    text-align: center;
-    margin-bottom: 40px;           /* More space below the title */
-    letter-spacing: -0.5px;        /* Tighter, modern heading style */
-}
-/* --- RESPONSIVENESS --- */
-@media (max-width: 768px) {
-    .section-title {
-        font-size: 1.8rem !important; /* Scales down for mobile phones */
-        margin-bottom: 25px;
-    }
-  }
-    .subjects-grid, .class-grid{
-      display:grid;
-      gap:14px;
-    }
-/* --- UPDATED SUBJECT CARD STYLES --- */
-.subjects-grid .subject-card, 
-.class-grid .class-card {
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid #f0f2f5;
-    display: flex;
-    flex-direction: column; /* Fixed from 'olumn' found on line 148 */
-    transition: transform 0.3s ease;
-}
-
-/* Increased height and ensured layout is centered */
-.subject-card .image-wrapper, 
-.class-card .image-wrapper {
-    height: 200px; /* Increased from 160px to occupy more space */
-    overflow: hidden;
-    width: 100%;
-    display: flex;
-}
-
-/* THE FIX: 'cover' makes the image occupy the entire container */
-.subject-card .image-wrapper img, 
-.class-card .image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Forces image to fill the container completely */
-    transition: transform 0.5s ease;
-}
-
-.card-content {
-    padding: 15px; /* Increased padding for better spacing */
-}
-
-.card-content h3 {
-    margin: 6px 0 0;
-    font-size: 1.1rem;
-    color: #072b57; /* School navy brand color */
-}
-
-/* --- RESPONSIVENESS --- */
-@media (max-width: 768px) {
-    .subject-card .image-wrapper, 
-    .class-card .image-wrapper {
-        height: 180px; /* Slightly shorter for mobile screens */
-    }
-}
-
-/* Optional: Subtle zoom effect on hover */
-.subject-card:hover img {
-    transform: scale(1.1);
-}
-
-/* MODIFIED TESTIMONIALS (INFINITE SLIDER) */
-    .testimonials-section{padding:28px 0;background:linear-gradient(180deg,#fff,#fbfcff); overflow: hidden;}
-    .testimonial-slider{
-        width: 100%;
-        overflow: hidden;
-        position: relative;
-        padding: 20px 0;
-    }
-    .testimonial-track {
-        display: flex;
-        width: max-content;
-        animation: scroll 40s linear infinite; /* Automatic scrolling */
-    }
-    .testimonial-track:hover {
-        animation-play-state: paused; /* Pause on hover for readability */
-    }
-    .testimonial-card{
-        width: 350px; 
-        margin: 0 15px;
-        background:#fff;
-        padding:24px;
-        border-radius:10px;
-        border:1px solid #eef2f7;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        flex-shrink: 0;
+    .menu-btn-mobile {
+      display: none;
+      background: var(--navy);
+      color: var(--brand);
+      border: none;
+      width: 44px; height: 44px;
+      border-radius: var(--radius-sm);
+      font-size: 1.25rem;
+      cursor: pointer;
     }
 
-    @keyframes scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-350px * 3 - 30px * 3)); } /* Moves the width of original cards */
+    /* Mobile Drawer */
+    .mobile-menu-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 27, 56, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+    }
+    .mobile-menu-modal.show { display: block; }
+    .mobile-menu-pane {
+      background: #fff;
+      width: 82%;
+      max-width: 320px;
+      height: 100%;
+      margin-left: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+      animation: slideInRight 0.3s ease;
+    }
+    @keyframes slideInRight {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+    .pane-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 14px;
+    }
+    .pane-links { display: flex; flex-direction: column; gap: 8px; }
+    .pane-links a {
+      padding: 12px 14px;
+      font-weight: 700;
+      color: var(--navy);
+      border-radius: var(--radius-sm);
+    }
+    .pane-links a:hover, .pane-links a.active {
+      background: rgba(246, 181, 28, 0.15);
     }
 
-    .testimonial-footer{display:flex;gap:10px;align-items:center;margin-top:12px}
-    .profile-pic{width:44px;height:44px;border-radius:50%;object-fit:cover}
+    /* HERO SECTION - Dynamic Campus with Blended Student Cover Photo */
+    .hero-dynamic {
+      position: relative;
+      color: #fff;
+      padding: 75px 0 85px 0;
+      overflow: hidden;
+      /* Blended with navy blue as requested by user */
+      background: linear-gradient(135deg, rgba(3, 27, 56, 0.92) 0%, rgba(7, 43, 87, 0.88) 45%, rgba(13, 62, 122, 0.82) 100%),
+                  url('cover page final.jpg') center/cover no-repeat;
+    }
+    .hero-dynamic::before {
+      content: '';
+      position: absolute;
+      width: 450px; height: 450px;
+      background: radial-gradient(circle, rgba(246, 181, 28, 0.18) 0%, transparent 70%);
+      top: -120px; left: -100px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(246, 181, 28, 0.18);
+      border: 1px solid rgba(246, 181, 28, 0.45);
+      color: var(--brand);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      backdrop-filter: blur(6px);
+    }
+    .hero-title-main {
+      font-size: 3.25rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+    }
+    .hero-title-main .accent { color: var(--brand); }
+    .hero-descr {
+      font-size: 1.05rem;
+      color: #e2e8f0;
+      line-height: 1.65;
+      margin-bottom: 30px;
+      max-width: 530px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
+    .hero-btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .btn-action-gold {
+      background: var(--brand);
+      color: var(--navy);
+      padding: 14px 30px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px var(--brand-glow);
+      transition: all 0.3s ease;
+    }
+    .btn-action-gold:hover {
+      background: #ffffff;
+      color: var(--navy);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(255, 255, 255, 0.25);
+    }
+    .btn-action-ghost {
+      border: 2px solid rgba(255, 255, 255, 0.45);
+      color: #ffffff;
+      padding: 14px 26px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(6px);
+      transition: all 0.3s ease;
+    }
+    .btn-action-ghost:hover {
+      border-color: #ffffff;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Right - Glass Mission Card */
+    .glass-mission-card {
+      background: rgba(7, 43, 87, 0.65);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: var(--radius-lg);
+      padding: 34px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      position: relative;
+      animation: floatSoft 6s ease-in-out infinite;
+    }
+    .glass-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .mission-flag {
+      background: var(--brand);
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 0.8rem;
+      padding: 5px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .glass-mission-card h3 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .glass-mission-card p {
+      font-size: 0.92rem;
+      color: #e2e8f0;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .glass-media-preview {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(3, 27, 56, 0.7);
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      margin-top: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .glass-media-preview img {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 2px solid var(--brand);
+    }
+    .glass-media-text h4 { font-size: 0.95rem; color: #fff; margin-bottom: 2px; }
+    .glass-media-text p { font-size: 0.8rem; color: #cbd5e1; margin: 0; }
+
+    /* Values Feature Row */
+    .values-row {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-35px);
+      position: relative;
+      z-index: 10;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .value-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .value-icon-circle {
+      width: 50px;
+      height: 50px;
+      background: rgba(246, 181, 28, 0.18);
+      color: var(--navy);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+    .value-box:hover .value-icon-circle {
+      background: var(--navy);
+      color: var(--brand);
+      transform: scale(1.08);
+    }
+    .value-box h4 {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .value-box p {
+      font-size: 0.86rem;
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+
+    /* Section Headers */
+    .section-head {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 46px auto;
+    }
+    .section-head .sub {
+      color: var(--brand);
+      font-weight: 800;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .section-head h2 {
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+    .section-head p {
+      color: var(--text-sub);
+      font-size: 0.98rem;
+      margin-top: 10px;
+    }
+
+    /* Curriculum Grid */
+    .curriculum-wrap { padding: 40px 0 80px 0; }
+    .curr-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .curr-item {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .curr-item:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand);
+    }
+    .curr-thumb {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+    .curr-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .curr-item:hover .curr-thumb img { transform: scale(1.08); }
+    .curr-meta {
+      padding: 22px;
+    }
+    .curr-meta .curr-icon {
+      color: var(--brand);
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .curr-meta h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .curr-meta p {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+
+    /* School Life & Activities */
+    .activities-wrap {
+      padding: 80px 0;
+      background: #ffffff;
+    }
+    .life-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .life-card {
+      background: #f8fafc;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .life-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      background: #ffffff;
+      border-color: rgba(246, 181, 28, 0.6);
+    }
+    .life-img-box {
+      height: 230px;
+      position: relative;
+      overflow: hidden;
+    }
+    .life-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .life-card:hover .life-img-box img {
+      transform: scale(1.08);
+    }
+    .life-tag {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(7, 43, 87, 0.92);
+      color: var(--brand);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      backdrop-filter: blur(4px);
+    }
+    .life-info {
+      padding: 22px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .life-info h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .life-info p {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      line-height: 1.55;
+    }
+
+    /* Testimonials Infinite Scroll Slider */
+    .testimonial-area {
+      padding: 80px 0;
+      background: #ffffff;
+      overflow: hidden;
+    }
+    .track-wrapper {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      padding: 10px 0;
+    }
+    .track-strip {
+      display: flex;
+      width: max-content;
+      animation: autoScroll 35s linear infinite;
+    }
+    .track-strip:hover { animation-play-state: paused; }
+    @keyframes autoScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .testi-tile {
+      width: 360px;
+      margin: 0 16px;
+      background: #f8fafc;
+      border-radius: var(--radius);
+      padding: 26px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .testi-tile:hover { transform: translateY(-4px); background: #fff; }
+    .testi-stars {
+      color: var(--brand);
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+    .testi-quote {
+      font-size: 0.94rem;
+      color: #334155;
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+    .testi-person {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testi-person img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--brand);
+      object-fit: cover;
+      background: var(--navy);
+    }
+    .testi-person h4 {
+      font-size: 0.95rem;
+      color: var(--navy);
+      font-weight: 800;
+    }
+    .testi-person span {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+    }
 
     /* Footer */
-    .main-footer{background:#08132a;color:#dbeafe;padding:24px 0;margin-top:30px}
-    .footer-container{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:var(--max-width);margin:0 auto}
-    .footer-logo{width:56px;height:56px;border-radius:8px;object-fit:cover}
-    .footer-div h4{margin:0 0 8px;color:#f6b51c}
-    .footer-div ul{list-style:none;padding:0;margin:0}
-    .footer-div li{margin:8px 0}
-    .footer-div a{color:rgba(219,234,254,0.9);display:inline-flex;align-items:center;gap:8px;transition:transform .18s, color .18s}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:12px;margin-top:16px;text-align:center;color:rgba(219,234,254,0.9)}
-
-    /* Quick Navigation hover effects */
-    .quick-links ul li a{
-      position:relative;
-      padding-left:6px;
-      transition: transform .18s ease, box-shadow .18s ease, color .18s ease;
+    .main-footer {
+      background: var(--navy-deep);
+      color: #cbd5e1;
+      padding: 60px 0 24px 0;
+      border-top: 4px solid var(--brand);
     }
-    .quick-links ul li a::after{
-      content:'';
-      position:absolute;
-      left:0;
-      bottom:-4px;
-      height:3px;
-      width:0%;
-      background:var(--brand);
-      border-radius:4px;
-      transition: width .25s cubic-bezier(.2,.9,.2,1), opacity .18s;
-      opacity:0;
+    .footer-columns {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 36px;
+      margin-bottom: 40px;
     }
-    .quick-links ul li a:hover{
-      color:var(--brand);
-      transform: translateX(6px);
-      box-shadow: 0 6px 18px var(--footer-hover-glow);
+    .footer-brand-title {
+      font-size: 1.3rem;
+      color: #ffffff;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .quick-links ul li a:hover::after{
-      width:100%;
-      opacity:1;
+    .footer-col h4 {
+      color: var(--brand);
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
     }
-
-    /* Socials (Connect With Us) hover effects */
-    .social-grid .social-item{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:8px 10px;
-      border-radius:8px;
-      color:rgba(219,234,254,0.95);
-      transition: background .18s ease, transform .18s ease, box-shadow .18s ease, color .18;
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a {
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
-    .social-grid .social-item i{
-      width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:6px;
-      transition: color .18s ease, transform .18s ease;
-      color:rgba(219,234,254,0.95);
+    .footer-col a:hover { color: var(--brand); transform: translateX(4px); }
+    .footer-contact-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 0.88rem;
     }
-    .social-grid .social-item:hover{
-      background: rgba(246,181,28,0.06);
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 8px 28px rgba(7,20,40,0.12);
-      color:var(--navy);
+    .footer-contact-item i { color: var(--brand); margin-top: 4px; }
+    .social-icons-row { display: flex; gap: 10px; margin-top: 16px; }
+    .social-btn {
+      width: 38px; height: 38px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s;
     }
-    .social-grid .social-item:hover i{
-      color:var(--brand);
-      transform: scale(1.05);
-    }
-
-    /* Responsive grid sizes */
-    @media (min-width: 760px){
-      .subjects-grid{grid-template-columns:repeat(3,1fr)}
-      .class-grid{grid-template-columns:repeat(3,1fr)}
-    }
-    @media (min-width: 980px){
-      .subjects-grid{grid-template-columns:repeat(3,1fr)}
-      .class-grid{grid-template-columns:repeat(3,1fr)}
-      .footer-container{grid-template-columns:1.4fr 1fr 1fr}
-      /* On large screens hide the menu toggle and show nav links */
-      .menu-toggle{display:none !important}
-      .nav-links{display:flex}
-      .nav-left-space{display:flex}
+    .social-btn:hover { background: var(--brand); color: var(--navy); transform: translateY(-3px); }
+    .footer-bar-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #94a3b8;
     }
 
-    /* Mobile / tablet overrides */
-    @media (max-width: 979px){
-      .menu-toggle{display:flex}
-      .nav-links{display:none}
-      .nav-left-space{width:120px} 
-      
-      /* HERO TWEAK: Maintaining side-by-side but scaling fonts */
-      .hero-left h1 { font-size: 1.5rem; }
-      .hero-left p.top-tagline { font-size: 0.8rem; }
-      .mission-blob { padding: 20px 25px; border-radius: 50px 0 0 100px; }
-      .mission-blob h2 { font-size: 1rem; }
-      .mission-blob p { font-size: 0.7rem; line-height: 1.3; }
-      .floating-image-card { bottom: 20px; border-radius: 10px; }
-      .floating-image-card img { height: 180px; }
-      .image-label-overlay { font-size: 0.7rem; padding: 6px 12px; bottom: 10px; left: 10px; }
-      
-      .testimonial-track { animation: scroll 20s linear infinite; }
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-layout { grid-template-columns: 1fr; }
+      .curr-grid, .life-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-columns { grid-template-columns: 1fr 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
     }
-
-    /* Narrow mobile tweaks */
-    @media (max-width: 759px){
-      .top-strip .container{padding:8px}
-      .nav-left-space{width:80px}
-      .subjects-grid{grid-template-columns:1fr}
-      .class-grid{grid-template-columns:1fr}
-      .footer-container{grid-template-columns:1fr;gap:12px}
+    @media (max-width: 768px) {
+      .nav-links-wrap { display: none; }
+      .menu-btn-mobile { display: block; }
+      .hero-title-main { font-size: 2.25rem; }
+      .curr-grid, .life-grid { grid-template-columns: 1fr; }
+      .footer-columns { grid-template-columns: 1fr; }
+      .top-strip .container { justify-content: center; text-align: center; }
     }
-
-    @media (max-width: 480px){
-      .nav-left-space{width:60px}
-      .hero-split { min-height: 320px; }
-    }
-
-    .mobile-nav-panel.open{display:block}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   </style>
 </head>
 <body>
-  <div id="formOverlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:9999; align-items:center; justify-content:center;">
-    <button id="closeForm" aria-label="Close enrollment form" style="position:absolute; right:18px; top:18px; color:white; font-size:30px; background:none; border:none; cursor:pointer;">&times;</button>
-    <iframe src="enrollment-form.html" title="Enrollment Form" style="width:90%; max-width:1000px; height:80%; border-radius:10px; border:none; background:#fff"></iframe>
-  </div>
 
+  <!-- Floating WhatsApp Action -->
+  <a href="https://wa.me/263777856382" target="_blank" rel="noopener noreferrer" class="floating-wa-btn" aria-label="Chat with Twaabane Primary on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Top Announcement Strip -->
   <div class="top-strip">
     <div class="container">
-      <div class="brand-inline">
-        <img src="school-logo.png" alt="Twaabane Logo" class="school-badge">
-        <div class="school-title">Twaabane Primary School</div>
+      <div class="top-left-contacts">
+        <span><i class="fas fa-map-marker-alt"></i> Stand 1060, Silyambembe Suburbs, Binga Centre</span>
+        <span><i class="fas fa-phone"></i> +263 77 785 6382 / +263 77 402 0699</span>
       </div>
-
-      <div style="display:flex;align-items:center;gap:10px">
-        <nav class="top-utilities" aria-label="Utilities">
-          <button class="signin-btn" onclick="location.href='signin.html'">Sign In</button>
-        </nav>
-
-        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open navigation">
-          <i class="fas fa-bars" id="hamburgerIcon" aria-hidden="true"></i>
-          <i class="fas fa-times" id="closeIcon" aria-hidden="true" style="display:none"></i>
-        </button>
+      <div class="top-right-links">
+        <a href="signin.html" class="portal-chip"><i class="fas fa-shield-alt"></i> Unified Portals Sign In</a>
       </div>
     </div>
   </div>
 
-  <nav class="main-nav" role="navigation" aria-label="Primary">
-    <div class="nav-container container">
-      <div class="nav-left-space" aria-hidden="true">
-        <div class="mini-box"></div>
-      </div>
+  <!-- Main Navigation -->
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="school-identity">
+        <img src="school-logo.png" alt="Twaabane Primary Logo" class="school-badge-img" />
+        <div class="school-title-text">
+          <h1>Twaabane Primary</h1>
+          <span>Binga Centre &bull; Established for Excellence</span>
+        </div>
+      </a>
 
-      <div class="nav-links right-shift" id="desktopNav">
-        <a href="index.html">Home</a>
-        <a href="aboutusedit.html">About Us</a>
-        <a href="academicsedit.html">Academics</a>
-        <a href="admissionsedit.html">Admissions</a>
-        <a href="contactedit.html">Contact</a>
-      </div>
-    </div>
+      <ul class="nav-links-wrap">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="aboutusedit.html">About Us</a></li>
+        <li><a href="academicsedit.html">Academics</a></li>
+        <li><a href="admissionsedit.html">Admissions</a></li>
+        <li><a href="updates.html" class="updates-link">Updates <span class="nav-pulse-dot" title="New announcements"></span></a></li>
+        <li><a href="contactedit.html">Contact</a></li>
+        <li><a href="enrollment.html" class="nav-cta-btn">Enroll Online</a></li>
+      </ul>
 
-    <div id="mobileNav" class="mobile-nav-panel" aria-hidden="true" style="position:relative;z-index:30;">
-      <div class="mobile-links container" role="menu" aria-label="Mobile primary">
-        <a href="index.html" role="menuitem">Home</a>
-        <a href="aboutusedit.html" role="menuitem">About Us</a>
-        <a href="academicsedit.html" role="menuitem">Academics</a>
-        <a href="admissionsedit.html" role="menuitem">Admissions</a>
-        <a href="contactedit.html" role="menuitem">Contact</a>
-      </div>
+      <button class="menu-btn-mobile" id="openMobile" aria-label="Open mobile menu">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </nav>
 
-  <header class="hero-split">
-    <div class="hero-left">
-    </div>
-
-    <div class="hero-right">
-      <div class="mission-blob">
-        <h2>MISSION STATEMENT</h2>
-        <p>To facilitate the provision of education that enhances empowerment of the communities to think in other terms and embraces diversity for gender equality and social inclusion.</p>
-        <p>Twaabane Primary School's priority is to produce individuals who are self-reliant and guided by the Christian values of faith, love, and prophetic voice. The goal is to empower all learners to become responsible God fearing citizens.</p>
-        <div class="cta-wrap" style="text-align: center; margin-top: 20px;">
-          <a href="enrollment.html" class="cta-button-yellow">Enroll Now</a>
-       </div>
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-menu-modal" id="mobileModal">
+    <div class="mobile-menu-pane">
+      <div class="pane-header">
+        <span style="font-weight:800; color:var(--navy);">Navigation Menu</span>
+        <button id="closeMobile" style="background:none; border:none; font-size:1.6rem; cursor:pointer;">&times;</button>
+      </div>
+      <div class="pane-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="aboutusedit.html">About Us</a>
+        <a href="academicsedit.html">Academics</a>
+        <a href="admissionsedit.html">Admissions</a>
+        <a href="updates.html">Updates & Events <span class="nav-pulse-dot"></span></a>
+        <a href="contactedit.html">Contact</a>
+        <a href="enrollment.html" style="background:var(--brand); color:var(--navy); font-weight:800; margin-top:8px;">Enroll Now</a>
+        <a href="signin.html" style="background:var(--navy); color:#fff; font-weight:700;">Portals Sign In</a>
       </div>
     </div>
+  </div>
 
-   <div class="floating-image-card">
-      <img src="floating-image.jpg" alt="Students in Uniform">
-    </div>
-
-  </header>
-
-  <main>
-    <section class="subjects-section">
-      <div class="container">
-        <h2 class="section-title">Our Curriculum</h2>
-        <div class="subjects-grid">
-          <div class="subject-card">
-            <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=500" alt="English Language"></div>
-            <div class="card-content"><i class="fas fa-book-open"></i><h3>English Language</h3></div>
-          </div>
-
-          <div class="subject-card">
-            <div class="image-wrapper"><img src="Mathematics.jpeg" alt="Mathematics"></div>
-            <div class="card-content"><i class="fas fa-calculator"></i><h3>Mathematics</h3></div>
-          </div>
-
-          <div class="subject-card">
-            <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1530210124550-912dc1381cb8?q=80&w=500" alt="Science and Technology"></div>
-            <div class="card-content"><i class="fas fa-microscope"></i><h3>Science & Technology</h3></div>
-          </div>
-
-          <div class="subject-card">
-            <div class="image-wrapper"><img src="Tonga.webp" alt="Local Languages"></div>
-            <div class="card-content"><i class="fas fa-comments"></i><h3>ChiTonga / IsiNdebele</h3></div>
-          </div>
-
-          <div class="subject-card">
-            <div class="image-wrapper"><img src="Social Science.jpeg" alt="Social Science"></div>
-            <div class="card-content"><i class="fas fa-globe-africa"></i><h3>Social Science</h3></div>
-          </div>
-
-          <div class="subject-card">
-            <div class="image-wrapper"><img src="PE and Arts.jpeg" alt="PE and Arts"></div>
-            <div class="card-content"><i class="fas fa-palette"></i><h3>PE and Arts</h3></div>
-          </div>
+  <!-- Hero Section (Blended Cover Page Photo with Deep Navy Gradient) -->
+  <section class="hero-dynamic">
+    <div class="container hero-layout">
+      <div>
+        <div class="hero-badge-pill">
+          <i class="fas fa-star"></i> Empowering Communities in Binga
+        </div>
+        <h2 class="hero-title-main">
+          Inspiring Young Minds, <span class="accent">Building Self-Reliance</span>
+        </h2>
+        <p class="hero-descr">
+          At Twaabane Primary School, we cultivate faith, intellectual curiosity, and gender equality in an uplifting Christian environment in Binga Centre, Zimbabwe.
+        </p>
+        <div class="hero-btn-row">
+          <a href="enrollment.html" class="btn-action-gold"><i class="fas fa-pen-nib"></i> Online Enrollment</a>
+          <a href="aboutusedit.html" class="btn-action-ghost"><i class="fas fa-compass"></i> Learn About Us</a>
         </div>
       </div>
-    </section>
 
-    <section class="classes-section">
-      <div class="container">
-        <h2 class="section-title">Our Grade Levels</h2>
-        <div class="class-grid">
-          <div class="class-card">
-            <div class="image-wrapper"><img src="floating-image.jpg" alt="Grade 1 Students playing at the playing grounds"></div>
-            <div class="card-content"><h3>Grade 1</h3><p>Fostering curiosity and foundational skills in a warm, engaging classroom environment.</p></div>
+      <div>
+        <div class="glass-mission-card">
+          <div class="glass-header">
+            <span class="mission-flag">Our Mission</span>
+            <i class="fas fa-cross" style="color:var(--brand); font-size:1.2rem;"></i>
           </div>
-          <div class="class-card">
-            <div class="image-wrapper"><img src="Grade 2.jpg" alt="Grade 2 Students"></div>
-            <div class="card-content"><h3>Grade 2</h3><p>Strengthening literacy and independent thinking through collaborative learning.</p></div>
-          </div>
-          <div class="class-card">
-            <div class="image-wrapper"><img src="Grade 3.jpg" alt="Grade 3 Students"></div>
-            <div class="card-content"><h3>Grade 3</h3><p>Developing critical problem-solving skills and creative expression.</p></div>
-          </div>
-          <div class="class-card">
-            <div class="image-wrapper"><img src="Grade 4.jpg" alt="Grade 4 Students"></div>
-            <div class="card-content"><h3>Grade 4</h3><p>Encouraging academic inquiry and expanding conceptual understanding across diverse subjects.</p></div>
-          </div>
-          <div class="class-card">
-            <div class="image-wrapper"><img src="Grade 5.jpg" alt="Grade 5 Students"></div>
-            <div class="card-content"><h3>Grade 5</h3><p>Cultivating leadership qualities and advanced research skills in a supportive environment.</p></div>
-          </div>
-          <div class="class-card">
-            <div class="image-wrapper"><img src="Grade 6.jpg" alt="Grade 6 Students"></div>
-            <div class="card-content"><h3>Grade 6</h3><p>Preparing students for the transition to middle school with a focus on autonomy and excellence.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="testimonials-section">
-      <div class="container">
-        <h2 class="section-title">What Our Community Says</h2>
-        <div class="testimonial-slider">
-          <div class="testimonial-track" id="testimonialTrack">
-            <div class="testimonial-card">
-              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-              <p class="message">"Twaabane Primary has transformed my child's confidence. The teachers are dedicated and the environment is truly supportive."</p>
-              <div class="testimonial-footer">
-                <img src="profpic.png" alt="Parent 1" class="profile-pic">
-                <div class="parent-info"><h4>Elina Munkombwe</h4><span>Grade 4 Parent</span></div>
-              </div>
-            </div>
-
-            <div class="testimonial-card">
-              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-              <p class="message">"The curriculum is robust and the focus on local languages makes us feel our culture is valued. Highly recommended!"</p>
-              <div class="testimonial-footer">
-                <img src="profpic.png" alt="Parent 2" class="profile-pic">
-                <div class="parent-info"><h4>Stephen Muzamba</h4><span>Grade 2 Parent</span></div>
-              </div>
-            </div>
-
-            <div class="testimonial-card">
-              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-              <p class="message">"Seeing the progress in Science and Tech has been amazing. My daughter loves going to school every single day."</p>
-              <div class="testimonial-footer">
-                <img src="profpic.png" alt="Parent 3" class="profile-pic">
-                <div class="parent-info"><h4>Maltida Mwiinde</h4><span>Grade 5 Parent</span></div>
-              </div>
+          <h3>Education For Transformation & Equality</h3>
+          <p>
+            To facilitate the provision of education that enhances empowerment of the communities to think in other terms and embraces diversity for gender equality and social inclusion.
+          </p>
+          <p>
+            Guided by Christian values of faith, love, and prophetic voice, our learners grow into self-reliant, God-fearing citizens.
+          </p>
+          <div class="glass-media-preview">
+            <img src="floating-image.jpg" alt="Learners in Uniform at Twaabane Primary" />
+            <div class="glass-media-text">
+              <h4>Active School Community</h4>
+              <p>Safe playground, sports & cultural enrichment</p>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
+  <!-- Core Values Highlight Ribbon -->
+  <div class="container">
+    <div class="values-row reveal">
+      <div class="values-grid">
+        <div class="value-box">
+          <div class="value-icon-circle"><i class="fas fa-heart"></i></div>
+          <div>
+            <h4>Christian Values & Love</h4>
+            <p>Faith, love, and a prophetic voice driving moral foundation and character excellence.</p>
+          </div>
+        </div>
+        <div class="value-box">
+          <div class="value-icon-circle"><i class="fas fa-balance-scale"></i></div>
+          <div>
+            <h4>Gender Equality & Inclusion</h4>
+            <p>Fostering an inclusive space where every boy and girl has equal voice and opportunity.</p>
+          </div>
+        </div>
+        <div class="value-box">
+          <div class="value-icon-circle"><i class="fas fa-seedling"></i></div>
+          <div>
+            <h4>Self-Reliance & Skills</h4>
+            <p>Empowering learners to think critically, innovate, and contribute to community growth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Curriculum Grid -->
+  <section class="curriculum-wrap">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="sub">Academic Foundation</span>
+        <h2>Our Curriculum</h2>
+        <p>Combining national primary standards with cultural grounding, sciences, and creative arts.</p>
+      </div>
+
+      <div class="curr-grid">
+        <div class="curr-item reveal">
+          <div class="curr-thumb">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600" alt="English Language" loading="lazy" />
+          </div>
+          <div class="curr-meta">
+            <i class="fas fa-book-open curr-icon"></i>
+            <h3>English Language</h3>
+            <p>Comprehensive literacy, grammar, conversational confidence, and creative writing.</p>
+          </div>
+        </div>
+
+        <div class="curr-item reveal">
+          <div class="curr-thumb">
+            <img src="Mathematics.jpeg" alt="Mathematics" loading="lazy" />
+          </div>
+          <div class="curr-meta">
+            <i class="fas fa-calculator curr-icon"></i>
+            <h3>Mathematics</h3>
+            <p>Logical thinking, arithmetic speed, problem-solving, and practical numbers in daily life.</p>
+          </div>
+        </div>
+
+        <div class="curr-item reveal">
+          <div class="curr-thumb">
+            <img src="https://images.unsplash.com/photo-1530210124550-912dc1381cb8?q=80&w=600" alt="Science & Tech" loading="lazy" />
+          </div>
+          <div class="curr-meta">
+            <i class="fas fa-microscope curr-icon"></i>
+            <h3>Science & Technology</h3>
+            <p>Experiential scientific inquiry, environmental studies, and computing literacy.</p>
+          </div>
+        </div>
+
+        <div class="curr-item reveal">
+          <div class="curr-thumb">
+            <img src="Tonga.webp" alt="Local Languages" loading="lazy" />
+          </div>
+          <div class="curr-meta">
+            <i class="fas fa-comments curr-icon"></i>
+            <h3>ChiTonga / IsiNdebele</h3>
+            <p>Celebrating indigenous languages, Zambezi cultural values, and linguistic fluency.</p>
+          </div>
+        </div>
+
+        <div class="curr-item reveal">
+          <div class="curr-thumb">
+            <img src="Social Science.jpeg" alt="Social Science" loading="lazy" />
+          </div>
+          <div class="curr-meta">
+            <i class="fas fa-globe-africa curr-icon"></i>
+            <h3>Social Science</h3>
+            <p>Civic education, national heritage, community leadership, and global awareness.</p>
+          </div>
+        </div>
+
+        <div class="curr-item reveal">
+          <div class="curr-thumb">
+            <img src="PE and Arts.jpeg" alt="PE and Arts" loading="lazy" />
+          </div>
+          <div class="curr-meta">
+            <i class="fas fa-palette curr-icon"></i>
+            <h3>PE and Arts</h3>
+            <p>Athletic discipline, sportsmanship, traditional dance, painting, and music.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- School Life & Activities (Edited from Our Grades) -->
+  <section class="activities-wrap">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="sub">Vibrant Campus Experience</span>
+        <h2>School Life & Activities</h2>
+        <p>Beyond textbooks: a dynamic environment fostering sportsmanship, culture, and team spirit.</p>
+      </div>
+
+      <div class="life-grid">
+        <!-- Photo 1: Recreation & Playgrounds -->
+        <div class="life-card reveal">
+          <div class="life-img-box">
+            <img src="floating-image.jpg" alt="Recreation and outdoor games" loading="lazy" />
+            <span class="life-tag"><i class="fas fa-futbol"></i> Outdoor Sports</span>
+          </div>
+          <div class="life-info">
+            <div>
+              <h3>Recreation & Athletics</h3>
+              <p>
+                Structured physical education sessions and spirited break-time recreation on our school fields that keep learners healthy, active, and socially engaged.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 2: Early Literacy -->
+        <div class="life-card reveal">
+          <div class="life-img-box">
+            <img src="Grade 2.jpg" alt="Early reading circle" loading="lazy" />
+            <span class="life-tag"><i class="fas fa-book-reader"></i> Early Literacy</span>
+          </div>
+          <div class="life-info">
+            <div>
+              <h3>Reading Circles & Phonics</h3>
+              <p>
+                Interactive storytelling and guided reading groups that instill a lifelong love of literature from a child's earliest years in primary education.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 3: Discovery & Science -->
+        <div class="life-card reveal">
+          <div class="life-img-box">
+            <img src="Grade 3.jpg" alt="Scientific classroom inquiry" loading="lazy" />
+            <span class="life-tag"><i class="fas fa-flask"></i> Hands-on Science</span>
+          </div>
+          <div class="life-info">
+            <div>
+              <h3>Hands-On Science & Discovery</h3>
+              <p>
+                Practical laboratory experiments, nature walks, and sensory observations that encourage students to hypothesize, test, and understand the natural world.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 4: Group Studies & Collaboration -->
+        <div class="life-card reveal">
+          <div class="life-img-box">
+            <img src="Grade 4.jpg" alt="Peer collaboration" loading="lazy" />
+            <span class="life-tag"><i class="fas fa-users"></i> Collaborative Learning</span>
+          </div>
+          <div class="life-info">
+            <div>
+              <h3>Group Projects & Teamwork</h3>
+              <p>
+                Collaborative workshops where learners share ideas, respect diverse viewpoints, and create joint class presentations that build public speaking confidence.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 5: Leadership & Cultural Arts -->
+        <div class="life-card reveal">
+          <div class="life-img-box">
+            <img src="Grade 5.jpg" alt="Cultural and civic engagement" loading="lazy" />
+            <span class="life-tag"><i class="fas fa-drum"></i> Cultural Arts & Values</span>
+          </div>
+          <div class="life-info">
+            <div>
+              <h3>Cultural Arts & Christian Fellowship</h3>
+              <p>
+                Weekly chapel devotionals, choral music, and cultural arts clubs celebrating Tonga customs alongside Christian values of humility and compassion.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 6: Senior Academic Readiness -->
+        <div class="life-card reveal">
+          <div class="life-img-box">
+            <img src="Grade 6.jpg" alt="Senior classroom prep" loading="lazy" />
+            <span class="life-tag"><i class="fas fa-graduation-cap"></i> Senior Mastery</span>
+          </div>
+          <div class="life-info">
+            <div>
+              <h3>Senior Academic Preparation</h3>
+              <p>
+                Intensive revision clinics, mock assessments, and personalized mentorship empowering upper primary learners to achieve top grade marks.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Community Testimonials (Continuous Smooth Slider) -->
+  <section class="testimonial-area">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="sub">Trusted by Families</span>
+        <h2>What Our Community Says</h2>
+        <p>Real stories from parents who partner with us in nurturing their children's development.</p>
+      </div>
+    </div>
+
+    <div class="track-wrapper">
+      <div class="track-strip" id="dynamicTrack">
+        <div class="testi-tile">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-quote">"Twaabane Primary has transformed my child's confidence. The teachers are dedicated and the environment is truly supportive."</p>
+          <div class="testi-person">
+            <img src="parent1.png" alt="Elina Munkombwe" onerror="this.src='school-logo.png'" />
+            <div>
+              <h4>Elina Munkombwe</h4>
+              <span>Parent of Grade 4 Learner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-tile">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-quote">"The curriculum is robust and the focus on local languages makes us feel our culture is valued. Highly recommended!"</p>
+          <div class="testi-person">
+            <img src="parent2.png" alt="Stephen Muzamba" onerror="this.src='school-logo.png'" />
+            <div>
+              <h4>Stephen Muzamba</h4>
+              <span>Parent of Grade 2 Learner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-tile">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-quote">"Seeing the progress in Science and Tech has been amazing. My daughter loves going to school every single day."</p>
+          <div class="testi-person">
+            <img src="parent3.png" alt="Maltida Mwiinde" onerror="this.src='school-logo.png'" />
+            <div>
+              <h4>Maltida Mwiinde</h4>
+              <span>Parent of Grade 5 Learner</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Repeated tiles for smooth infinite marquee -->
+        <div class="testi-tile">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-quote">"Twaabane Primary has transformed my child's confidence. The teachers are dedicated and the environment is truly supportive."</p>
+          <div class="testi-person">
+            <img src="parent1.png" alt="Elina Munkombwe" onerror="this.src='school-logo.png'" />
+            <div>
+              <h4>Elina Munkombwe</h4>
+              <span>Parent of Grade 4 Learner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-tile">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-quote">"The curriculum is robust and the focus on local languages makes us feel our culture is valued. Highly recommended!"</p>
+          <div class="testi-person">
+            <img src="parent2.png" alt="Stephen Muzamba" onerror="this.src='school-logo.png'" />
+            <div>
+              <h4>Stephen Muzamba</h4>
+              <span>Parent of Grade 2 Learner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-tile">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-quote">"Seeing the progress in Science and Tech has been amazing. My daughter loves going to school every single day."</p>
+          <div class="testi-person">
+            <img src="parent3.png" alt="Maltida Mwiinde" onerror="this.src='school-logo.png'" />
+            <div>
+              <h4>Maltida Mwiinde</h4>
+              <span>Parent of Grade 5 Learner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="main-footer">
-    <div class="footer-container container">
-      <div class="footer-div school-info">
-        <div style="display:flex;align-items:center;gap:12px">
-          <img src="school-logo.png" alt="Logo" class="footer-logo">
-          <h3 style="margin:0;color:#fff">Twaabane Primary School</h3>
+    <div class="container footer-columns">
+      <div>
+        <div class="footer-brand-title">
+          <img src="school-logo.png" alt="Logo" style="width:40px; height:40px; border-radius:50%;" />
+          <span>Twaabane Primary</span>
         </div>
-        <p style="color:rgba(219,234,254,0.9);margin-top:8px">Providing quality education and fostering a lead-ready generation. We are committed to excellence in academics, sports, and character building.</p>
+        <p style="font-size:0.88rem; line-height:1.6; margin-bottom:16px;">
+          Fostering empowered, responsible, God-fearing learners in Binga, Zimbabwe through Christian values, cultural respect, and comprehensive primary academic curriculum.
+        </p>
+        <div class="social-icons-row">
+          <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/263777856382" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
       </div>
 
-      <div class="footer-div quick-links">
-        <h4>Quick Navigation</h4>
+      <div class="footer-col">
+        <h4>Navigation</h4>
         <ul>
-          <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
-          <li><a href="aboutusedit.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-          <li><a href="admissionsedit.html"><i class="fas fa-user-plus"></i> Admissions</a></li>
-          <li><a href="academicsedit.html"><i class="fas fa-book"></i> Academics</a></li>
-          <li><a href="contactedit.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="aboutusedit.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="academicsedit.html"><i class="fas fa-chevron-right"></i> Academics</a></li>
+          <li><a href="admissionsedit.html"><i class="fas fa-chevron-right"></i> Admissions</a></li>
+          <li><a href="updates.html"><i class="fas fa-chevron-right"></i> Updates & Events</a></li>
+          <li><a href="enrollment.html"><i class="fas fa-chevron-right"></i> Digital Enrollment</a></li>
+          <li><a href="contactedit.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
         </ul>
       </div>
 
-      <div class="footer-div social-links">
-        <h4>Connect With Us</h4>
-        <div class="social-grid" style="display:flex;flex-direction:column;gap:8px">
-          <a href="#" class="social-item"><i class="fab fa-facebook-f"></i> Facebook</a>
-          <a href="#" class="social-item"><i class="fab fa-instagram"></i> Instagram</a>
-          <a href="#" class="social-item"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-          <a href="#" class="social-item"><i class="fab fa-twitter"></i> Twitter</a>
+      <div class="footer-col">
+        <h4>Portals & Access</h4>
+        <ul>
+          <li><a href="signin.html"><i class="fas fa-lock"></i> All Portals Sign In</a></li>
+          <li><a href="student-portal.html"><i class="fas fa-graduation-cap"></i> Student Portal</a></li>
+          <li><a href="staff-portal.html"><i class="fas fa-chalkboard-teacher"></i> Staff Portal</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <div class="footer-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Stand 1060, Silyambembe Suburbs, Binga Centre, Zimbabwe</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+263 77 785 6382<br>+263 77 402 0699</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>twaabane@outlook.com</span>
         </div>
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <p>&copy; 2026 Twaabane Primary School. All Rights Reserved.</p>
+    <div class="container footer-bar-bottom">
+      <p>&copy; 2026 Twaabane Primary School. All Rights Reserved. Binga Centre, Zimbabwe.</p>
     </div>
   </footer>
 
   <script>
-    (function(){
-      // INFINITE SLIDER LOGIC
-      const track = document.getElementById('testimonialTrack');
-      if(track) {
-          const cards = track.innerHTML;
-          track.innerHTML = cards + cards + cards;
-      }
-
-      const menuToggle = document.getElementById('menuToggle');
-      const mobileNav = document.getElementById('mobileNav');
-      const hamburgerIcon = document.getElementById('hamburgerIcon');
-      const closeIcon = document.getElementById('closeIcon');
-
-      function openMenu(){
-        mobileNav.classList.add('open');
-        mobileNav.setAttribute('aria-hidden','false');
-        menuToggle.setAttribute('aria-expanded','true');
-        if(hamburgerIcon) hamburgerIcon.style.display='none';
-        if(closeIcon) closeIcon.style.display='inline-block';
-      }
-      function closeMenu(){
-        mobileNav.classList.remove('open');
-        mobileNav.setAttribute('aria-hidden','true');
-        menuToggle.setAttribute('aria-expanded','false');
-        if(hamburgerIcon) hamburgerIcon.style.display='inline-block';
-        if(closeIcon) closeIcon.style.display='none';
-      }
-
-      if(menuToggle){
-        menuToggle.addEventListener('click', function(e){
-          const isOpen = mobileNav.classList.contains('open');
-          if(isOpen) closeMenu(); else openMenu();
-        });
-      }
-
-      if(mobileNav){
-        mobileNav.addEventListener('click', function(e){
-          if(e.target.tagName === 'A') closeMenu();
-        });
-      }
-
-      document.addEventListener('keydown', function(e){
-        if(e.key === 'Escape') closeMenu();
+    // Mobile Drawer Logic
+    const openM = document.getElementById('openMobile');
+    const closeM = document.getElementById('closeMobile');
+    const modal = document.getElementById('mobileModal');
+    if (openM && closeM && modal) {
+      openM.addEventListener('click', () => modal.classList.add('show'));
+      closeM.addEventListener('click', () => modal.classList.remove('show'));
+      modal.addEventListener('click', (e) => {
+        if(e.target === modal) modal.classList.remove('show');
       });
+    }
 
-      document.addEventListener('click', function(e){
-        const isSmall = window.matchMedia('(max-width:979px)').matches;
-        const withinToggle = menuToggle && menuToggle.contains(e.target);
-        const withinPanel = mobileNav && mobileNav.contains(e.target);
-        if(isSmall && !withinToggle && !withinPanel){
-          closeMenu();
-        }
-      });
-
-      const formOverlay = document.getElementById('formOverlay');
-      const closeForm = document.getElementById('closeForm');
-      if(closeForm){
-        closeForm.addEventListener('click', ()=> formOverlay.style.display='none');
-      }
-    })();
+    // Scroll Reveal Intersection Observer
+    const revealElements = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealElements.forEach(el => observer.observe(el));
+    } else {
+      revealElements.forEach(el => el.classList.add('active'));
+    }
   </script>
 </body>
 </html>
-
-
-
-
-
