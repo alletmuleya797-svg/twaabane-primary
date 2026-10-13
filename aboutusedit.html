@@ -1,553 +1,808 @@
-/* Color Palette */
-:root {
-    --navy: #002347;
-    --yellow: #FFD200;
-    --sky: #6A91D1;
-    --white: #ffffff;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Twaabane Primary School</title>
+  <link rel="icon" type="image/png" href="school-logo.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="description" content="Discover the history, vision, mission, and passionate teaching staff of Twaabane Primary School in Binga Centre, Zimbabwe. Committed to Christian values, gender inclusion, and academic excellence." />
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
-    margin: 0;
-}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-/* --- Navigation Styles --- */
-.top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--yellow);
-    padding: 10px 5%;
-}
-
-.logo-group {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.school-badge {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%; /* Makes logo circular */
-    object-fit: cover;
-    background: white;
-}
-
-.school-name {
-    font-weight: bold;
-    color: var(--navy);
-    font-size: 1.2rem;
-}
-
-.utility-links {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-.btn-store {
-    background: var(--navy);
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.main-nav {
-    background-color: var(--navy);
-    padding: 15px 5%;
-    display: flex;
-    justify-content: flex-end; /* Pushes main links to the right */
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    margin-left: 30px;
-    font-weight: 500;
-}
-
-/* Header Styles (Exact match to screenshot) */
-header {
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-
-.logo-section {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.school-logo { height: 40px; border-radius: 50%; }
-.school-name { font-weight: bold; color: var(--navy); font-size: 1.2rem; }
-
-.utility-nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: var(--white);
-    font-weight: 500;
-}
-
-.fray-btn {
-    background: var(--navy);
-    padding: 8px 15px;
-    border-radius: 5px;
-}
-
-.main-nav {
-    background: var(--navy);
-    padding: 15px 0;
-    text-align: center;
-}
-
-.main-nav a {
-    color: var(--white);
-    margin: 0 20px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.main-nav a.active, .main-nav a:hover {
-    color: var(--yellow);
-}
-
-.about-hero{
-    background: linear-gradient(rgba(0, 45, 98, 0.8), rgba(0, 45, 98, 0.8)), 
-                url('https://images.unsplash.com/photo-1523050853064-9d58ef1bb724?auto=format&fit=crop&w=1200&q=80');
-    background-size: cover;
-    background-position: center;
-    height: 45vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--yellow);  
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    animation: slideDown 0.8s ease;
-}
-/* tablet */
-@media (max-width: 900px) {
-  .hero-content h1 {
-    font-size: 2.6rem;
-  }
-}
-
-/* mobile */
-@media (max-width: 480px) {
-  .hero-content h1 {
-    font-size: 1.8rem;
-  }
-}
-
-.container {
-    max-width: 1000px;
-    margin: -50px auto 50px;
-    padding: 0 20px;
-}
-
-/* Animations */
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.block{
-    animation: scrolling linear;  
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
-}
-@keyframes scrolling{
-    from{
-        opacity: 0;
-        scale: 0.5;
+  <style>
+    :root {
+      --brand: #f6b51c;        /* School Gold */
+      --brand-hover: #ffc94d;
+      --brand-glow: rgba(246, 181, 28, 0.35);
+      --navy: #072b57;         /* School Navy */
+      --navy-deep: #031b38;
+      --navy-light: #0d3d78;
+      --accent-blue: #6A89CC;  /* Periwinkle */
+      --light-surface: #f8fafc;
+      --white: #ffffff;
+      --text-main: #0f172a;
+      --text-sub: #475569;
+      --border-subtle: #e2e8f0;
+      --max-w: 1240px;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow-sm: 0 4px 12px rgba(7, 43, 87, 0.05);
+      --shadow-md: 0 10px 25px rgba(7, 43, 87, 0.09);
+      --shadow-lg: 0 20px 45px rgba(7, 43, 87, 0.14);
     }
-    to{
-        opacity: 1;
-        scale: 1;
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      color: var(--text-main);
+      background-color: var(--light-surface);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-}
-/* Card Hover Effects */
-.card {
-    background: var(--white);
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: slideUp 0.8s ease forwards;
-    position: relative;
-    border-left: 5px solid var(--yellow);    
-}
+    h1, h2, h3, h4, .brand-font { font-family: 'Outfit', sans-serif; }
+    a { text-decoration: none; color: inherit; transition: all 0.25s ease; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { width: 92%; max-width: var(--max-w); margin: 0 auto; }
 
-.card:hover {
-    transform: translateY(-15px) scale(1.05);
-    box-shadow: 0 20px 30px rgba(0,35,71,0.2);
-}
-.card p {
-  text-align: justify;
-  }
-.icon-wrap {
-    width: 50px;
-    height: 50px;
-    background: var(--sky);
-    color: var(--navy);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px;
-    transition: transform 0.6s;
-}
-
-.card:hover .icon-wrap {
-    transform: rotateY(180deg);
-    background: var(--yellow);
-}
-
-ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-ul li {
-    padding: 8px 0;
-    position: relative;
-    padding-left: 25px;
-}
-
-ul li::before {
-    content: "\f00c";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    position: absolute;
-    left: 0;
-    color: var(--yellow);
-}
-
-
-/*Grid Layout for Mission, Vision,..*/
-.grid-layout{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    margin-top: 30px;
-}
-
-/* Team Grid (3 per row) */
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    margin-top: 30px;
-}
-
-.img-box {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    height: 280px;
-    border: 3px solid transparent;
-    transition: 0.3s;
-}
-
-.img-box:hover {
-    border-color: var(--yellow);
-}
-
-.img-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: 0.5s;
-}
-
-.img-box:hover img {
-    transform: scale(1.1);
-    filter: brightness(70%);
-}
-
-.caption {
-    position: absolute;
-    bottom: -50px;
-    left: 0;
-    width: 100%;
-    background: var(--navy);
-    color: var(--yellow);
-    padding: 10px;
-    text-align: center;
-    transition: 0.4s;
-    font-weight: bold;
-}
-
-.img-box:hover .caption {
-    bottom: 0;
-}
-
-/* Footer Styling */
-.main-footer {
-    background-color: var(--navy);
-    color: var(--white);
-    padding: 60px 20px 20px 20px;
-    margin-top: 50px;
-    border-top: 5px solid var(--yellow);
-}
-
-.footer-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 40px;
-}
-
-.footer-div h3, .footer-div h4 {
-    color: var(--yellow);
-    margin-bottom: 20px;
-}
-
-.footer-logo-area {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.footer-logo {
-    width: 50px;
-    height: auto;
-    background: white;
-    border-radius: 50%;
-    padding: 5px;
-}
-
-.footer-div p {
-    line-height: 1.6;
-    font-size: 0.95rem;
-    color: #cbd5e0;
-}
-
-/* Quick Links Styling */
-.quick-links ul {
-    list-style: none;
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-.quick-links ul li {
-    margin-bottom: 12px;
-}
-
-.quick-links ul li a {
-    color: var(--white);
-    text-decoration: none;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.quick-links ul li a:hover {
-    color: var(--yellow);
-    padding-left: 8px;
-}
-
-/* Social Grid Styling */
-.social-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.social-item {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.social-item:hover {
-    color: var(--sky-blue);
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.8rem;
-    color: #a0aec0;
-}
-
-/* Responsive Footer */
-@media (max-width: 768px) {
-    .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
+    /* Floating WhatsApp Button */
+    .floating-wa-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 54px;
+      height: 54px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      transition: transform 0.3s ease;
     }
-    .footer-logo-area {
-        justify-content: center;
+    .floating-wa-btn:hover { transform: scale(1.12); color: #fff; }
+
+    /* Top Strip */
+    .top-strip {
+      background: var(--navy-deep);
+      color: #e2e8f0;
+      font-size: 0.85rem;
+      padding: 8px 0;
+      border-bottom: 2px solid var(--brand);
     }
-    .quick-links ul li a, .social-item {
-        justify-content: center;
+    .top-strip .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
-    .team-grid{
-        grid-template-columns: 1fr;
-    }    
-    .grid-layout{
-        grid-template-columns: 1fr;
-    }    
-}
+    .top-left-contacts { display: flex; gap: 20px; align-items: center; }
+    .top-left-contacts span { display: inline-flex; align-items: center; gap: 7px; }
+    .top-left-contacts i { color: var(--brand); }
+    .portal-chip {
+      background: rgba(246, 181, 28, 0.15);
+      border: 1px solid var(--brand);
+      color: var(--brand);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .portal-chip:hover { background: var(--brand); color: var(--navy); }
 
-/* ---------------------------
-   Responsive navigation toggle
-   (CSS-only using checkbox hack)
-   --------------------------- */
+    /* Navigation */
+    .site-nav {
+      background: #ffffff;
+      box-shadow: 0 4px 20px rgba(7, 43, 87, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+    }
+    .school-identity {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .school-badge-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid var(--brand);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      object-fit: cover;
+    }
+    .school-title-text h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+    }
+    .school-title-text span {
+      font-size: 0.76rem;
+      color: var(--text-sub);
+      font-weight: 600;
+    }
+    .nav-links-wrap {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-links-wrap a {
+      padding: 8px 14px;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.94rem;
+      border-radius: var(--radius-sm);
+      position: relative;
+    }
+    .nav-links-wrap a:hover, .nav-links-wrap a.active {
+      background: rgba(7, 43, 87, 0.06);
+      color: var(--navy);
+    }
+    .nav-links-wrap a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 14px;
+      right: 14px;
+      height: 3px;
+      background: var(--brand);
+      border-radius: 2px;
+    }
+    .nav-cta-btn {
+      background: var(--brand) !important;
+      color: var(--navy) !important;
+      font-weight: 800 !important;
+      border-radius: 30px !important;
+      padding: 9px 22px !important;
+      box-shadow: 0 4px 14px var(--brand-glow);
+      margin-left: 6px;
+    }
+    .nav-cta-btn:hover { background: #ffc94d !important; transform: translateY(-2px); }
 
-/* Hidden checkbox (off-screen) */
-.nav-toggle {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
+    .menu-btn-mobile {
+      display: none;
+      background: var(--navy);
+      color: var(--brand);
+      border: none;
+      width: 44px; height: 44px;
+      border-radius: var(--radius-sm);
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
 
-/* Menu button (label) */
-.nav-toggle-label {
-  display: none; /* shown on small screens via media query */
-  position: absolute;
-  right: 5%;
-  top: 14px;
-  width: 44px;
-  height: 44px;
-  background: var(--navy);
-  border-radius: 8px;
-  cursor: pointer;
-  z-index: 1100;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  transition: background 0.2s ease;
-}
+    /* Mobile Drawer */
+    .mobile-menu-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 27, 56, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+    }
+    .mobile-menu-modal.show { display: block; }
+    .mobile-menu-pane {
+      background: #fff;
+      width: 82%;
+      max-width: 320px;
+      height: 100%;
+      margin-left: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pane-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 14px;
+    }
+    .pane-links { display: flex; flex-direction: column; gap: 8px; }
+    .pane-links a {
+      padding: 12px 14px;
+      font-weight: 700;
+      color: var(--navy);
+      border-radius: var(--radius-sm);
+    }
+    .pane-links a:hover, .pane-links a.active { background: rgba(246, 181, 28, 0.15); }
 
-/* inner icon displayed by the label (three bars) */
-.nav-toggle-label .menu-icon,
-.nav-toggle-label .menu-icon::before,
-.nav-toggle-label .menu-icon::after {
-  display: block;
-  width: 20px;
-  height: 2px;
-  background: var(--yellow);
-  position: relative;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-  border-radius: 1px;
-}
+    /* Page Header */
+    .page-hero {
+      background: linear-gradient(135deg, rgba(3, 27, 56, 0.94) 0%, rgba(7, 43, 87, 0.88) 50%, rgba(13, 62, 122, 0.82) 100%),
+                  url('cover page final.jpg') center/cover no-repeat;
+      color: #fff;
+      padding: 65px 0 70px 0;
+      text-align: center;
+    }
+    .page-hero .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(246, 181, 28, 0.18);
+      border: 1px solid rgba(246, 181, 28, 0.45);
+      color: var(--brand);
+      padding: 5px 16px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 14px;
+    }
+    .page-hero h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .page-hero h1 span { color: var(--brand); }
+    .page-hero p {
+      font-size: 1.05rem;
+      color: #e2e8f0;
+      max-width: 620px;
+      margin: 0 auto;
+    }
 
-/* create top & bottom bars */
-.nav-toggle-label .menu-icon::before,
-.nav-toggle-label .menu-icon::after {
-  content: "";
-  position: absolute;
-  left: 0;
-}
-.nav-toggle-label .menu-icon::before { top: -6px; }
-.nav-toggle-label .menu-icon::after  { top: 6px; }
+    /* Info Cards Grid (Mission, Vision, Values, Achievements) */
+    .about-cards-section {
+      padding: 70px 0;
+    }
+    .section-head {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 46px auto;
+    }
+    .section-head .sub {
+      color: var(--brand);
+      font-weight: 800;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .section-head h2 {
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+    .grid-info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .info-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .info-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand);
+    }
+    .card-icon-circle {
+      width: 52px;
+      height: 52px;
+      background: rgba(246, 181, 28, 0.18);
+      color: var(--navy);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+      transition: all 0.3s ease;
+    }
+    .info-card:hover .card-icon-circle {
+      background: var(--navy);
+      color: var(--brand);
+    }
+    .info-card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .info-card p {
+      font-size: 0.92rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+    .info-card ul {
+      list-style: none;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--text-sub);
+    }
+    .info-card ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .info-card ul li i { color: var(--brand); margin-top: 4px; }
 
-/* Mobile breakpoint: hide inline nav-links and show toggle */
-@media (max-width: 900px) {
-  .main-nav {
-    padding: 12px 5%;
-    position: relative;
-  }
+    /* Team / Educators Section */
+    .team-section {
+      padding: 70px 0 85px 0;
+      background: #ffffff;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .team-card {
+      background: var(--light-surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand);
+    }
+    .team-img-wrap {
+      height: 270px;
+      overflow: hidden;
+      position: relative;
+    }
+    .team-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .team-card:hover .team-img-wrap img { transform: scale(1.08); }
+    .team-badge {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(7, 43, 87, 0.92);
+      color: var(--brand);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      backdrop-filter: blur(4px);
+    }
+    .team-info {
+      padding: 20px;
+      text-align: center;
+    }
+    .team-info h4 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .team-info span {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      font-weight: 600;
+    }
 
-  /* hide the inline links initially */
-  .nav-links {
-    display: none;
-    width: 100%;
-    background: var(--navy);
-    position: absolute;
-    left: 0;
-    top: 100%;
-    transform-origin: top;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    overflow: hidden;
-    z-index: 1050;
-  }
+    /* Footer */
+    .main-footer {
+      background: var(--navy-deep);
+      color: #cbd5e1;
+      padding: 60px 0 24px 0;
+      border-top: 4px solid var(--brand);
+    }
+    .footer-columns {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 36px;
+      margin-bottom: 40px;
+    }
+    .footer-brand-title {
+      font-size: 1.3rem;
+      color: #ffffff;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-col h4 {
+      color: var(--brand);
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a {
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-col a:hover { color: var(--brand); transform: translateX(4px); }
+    .footer-contact-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 0.88rem;
+    }
+    .footer-contact-item i { color: var(--brand); margin-top: 4px; }
+    .social-icons-row { display: flex; gap: 10px; margin-top: 16px; }
+    .social-btn {
+      width: 38px; height: 38px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s;
+    }
+    .social-btn:hover { background: var(--brand); color: var(--navy); transform: translateY(-3px); }
+    .footer-bar-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
 
-  /* stack links vertically inside dropdown */
-  .nav-links a {
-    display: block;
-    padding: 14px 20px;
-    margin: 0;
-    border-top: 1px solid rgba(255,255,255,0.04);
-    text-align: left;
-  }
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .grid-info, .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-columns { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links-wrap { display: none; }
+      .menu-btn-mobile { display: block; }
+      .grid-info, .team-grid { grid-template-columns: 1fr; }
+      .footer-columns { grid-template-columns: 1fr; }
+      .page-hero h1 { font-size: 2.25rem; }
+      .top-strip .container { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
 
-  /* show menu button */
-  .nav-toggle-label {
-    display: flex;
-  }
+  <!-- Floating WhatsApp Action -->
+  <a href="https://wa.me/263777856382" target="_blank" rel="noopener noreferrer" class="floating-wa-btn" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
-  /* When checkbox checked, show nav-links with sliding animation */
-  .nav-toggle:checked + .nav-toggle-label + .main-nav .nav-links,
-  .nav-toggle:checked ~ .main-nav .nav-links {
-    display: block;
-    animation: navDrop 0.32s ease forwards;
-  }
+  <!-- Top Strip -->
+  <div class="top-strip">
+    <div class="container">
+      <div class="top-left-contacts">
+        <span><i class="fas fa-map-marker-alt"></i> Stand 1060, Silyambembe Suburbs, Binga Centre</span>
+        <span><i class="fas fa-phone"></i> +263 77 785 6382 / +263 77 402 0699</span>
+      </div>
+      <div class="top-right-links">
+        <a href="signin.html" class="portal-chip"><i class="fas fa-shield-alt"></i> Unified Portals Sign In</a>
+      </div>
+    </div>
+  </div>
 
-  /* Transform the menu icon into an X when checked */
-  .nav-toggle:checked + .nav-toggle-label .menu-icon {
-    background: transparent;
-  }
-  .nav-toggle:checked + .nav-toggle-label .menu-icon::before {
-    transform: translateY(6px) rotate(45deg);
-  }
-  .nav-toggle:checked + .nav-toggle-label .menu-icon::after {
-    transform: translateY(-6px) rotate(-45deg);
-  }
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="school-identity">
+        <img src="school-logo.png" alt="Twaabane Primary Logo" class="school-badge-img" />
+        <div class="school-title-text">
+          <h1>Twaabane Primary</h1>
+          <span>Binga Centre &bull; Established for Excellence</span>
+        </div>
+      </a>
 
-  /* reduce logo size a bit */
-  .school-logo { height: 34px; }
-  .school-name { font-size: 1rem; }
+      <ul class="nav-links-wrap">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutusedit.html" class="active">About Us</a></li>
+        <li><a href="academicsedit.html">Academics</a></li>
+        <li><a href="admissionsedit.html">Admissions</a></li>
+        <li><a href="updates.html">Updates</a></li>
+        <li><a href="contactedit.html">Contact</a></li>
+        <li><a href="enrollment.html" class="nav-cta-btn">Enroll Online</a></li>
+      </ul>
 
-  /* ensure header elements remain visible */
-  header { padding-bottom: 10px; }
-}
+      <button class="menu-btn-mobile" id="openMobile" aria-label="Open mobile menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
 
-/* slide down animation for nav dropdown */
-@keyframes navDrop {
-  0% { opacity: 0; transform: translateY(-6px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-menu-modal" id="mobileModal">
+    <div class="mobile-menu-pane">
+      <div class="pane-header">
+        <span style="font-weight:800; color:var(--navy);">Navigation Menu</span>
+        <button id="closeMobile" style="background:none; border:none; font-size:1.6rem; cursor:pointer;">&times;</button>
+      </div>
+      <div class="pane-links">
+        <a href="index.html">Home</a>
+        <a href="aboutusedit.html" class="active">About Us</a>
+        <a href="academicsedit.html">Academics</a>
+        <a href="admissionsedit.html">Admissions</a>
+        <a href="updates.html">Updates & Events</a>
+        <a href="contactedit.html">Contact</a>
+        <a href="enrollment.html" style="background:var(--brand); color:var(--navy); font-weight:800; margin-top:8px;">Enroll Now</a>
+        <a href="signin.html" style="background:var(--navy); color:#fff; font-weight:700;">Portals Sign In</a>
+      </div>
+    </div>
+  </div>
 
-/* Accessibility: focus styles for the label when keyboard focused */
-.nav-toggle-label:focus {
-  outline: 2px solid rgba(255,210,0,0.35);
-  outline-offset: 3px;
-}
+  <!-- Page Hero Banner -->
+  <header class="page-hero">
+    <div class="container">
+      <div class="badge-label"><i class="fas fa-landmark"></i> Rooted in Faith & Community</div>
+      <h1>About <span>Twaabane Primary</span></h1>
+      <p>
+        Nurturing excellence, fostering self-reliance, and inspiring community leadership in Binga Centre, Zimbabwe.
+      </p>
+    </div>
+  </header>
 
-/* Ensure nav-links are visible again on wider screens */
-@media (min-width: 901px) {
-  .nav-toggle-label { display: none; }
-  .nav-links { display: block !important; position: static; box-shadow: none; background: transparent; }
-  .nav-links a { padding: 0; margin-left: 30px; display: inline-block; border-top: none; }
-}
+  <!-- Mission, Vision & Values Section -->
+  <section class="about-cards-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="sub">Guiding Philosophy</span>
+        <h2>Our Identity & Pillars</h2>
+        <p>Built upon Christian values, cultural respect, and equal empowerment for every learner.</p>
+      </div>
+
+      <div class="grid-info">
+        <!-- Mission -->
+        <div class="info-card">
+          <div class="card-icon-circle"><i class="fas fa-bullseye"></i></div>
+          <h3>Our Mission</h3>
+          <p>
+            To facilitate the provision of education that enhances empowerment of the communities to think in other terms and embraces diversity for gender equality and social inclusion.
+          </p>
+          <p style="margin-top: 10px;">
+            Twaabane Primary School's priority is to produce individuals who are self-reliant and guided by the Christian values of faith, love, and prophetic voice.
+          </p>
+        </div>
+
+        <!-- Vision -->
+        <div class="info-card">
+          <div class="card-icon-circle"><i class="fas fa-eye"></i></div>
+          <h3>Our Vision</h3>
+          <p>
+            To establish and administer a leading centre of educational excellence in Binga and beyond through promotion of innovation, real-life competencies, and a holistic personal growth curriculum.
+          </p>
+        </div>
+
+        <!-- Core Values -->
+        <div class="info-card">
+          <div class="card-icon-circle"><i class="fas fa-gem"></i></div>
+          <h3>Core Values</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> <strong>Integrity:</strong> High moral character, truthfulness, and honesty.</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Service:</strong> Dedicated to delivering beyond expectations for our learners.</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Excellence:</strong> Recognizing that every child has the capacity to achieve.</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Innovation:</strong> Embracing technology, STEM, and creative problem solving.</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Teamwork:</strong> Strong partnership between teachers, parents, and community.</li>
+          </ul>
+        </div>
+
+        <!-- Achievements -->
+        <div class="info-card">
+          <div class="card-icon-circle"><i class="fas fa-award"></i></div>
+          <h3>Achievements</h3>
+          <p>
+            Celebrated regional champions in inter-school athletics 2025, outstanding pass marks in primary curriculum assessments, and active recognition in indigenous Zambezi culture and arts festivals.
+          </p>
+        </div>
+
+        <!-- Community -->
+        <div class="info-card">
+          <div class="card-icon-circle"><i class="fas fa-handshake"></i></div>
+          <h3>Community Partnerships</h3>
+          <p>
+            Deep collaboration with Binga elders, faith communities, and local councils to conduct tree planting, civic clean-ups, and ensure every child has access to quality education.
+          </p>
+        </div>
+
+        <!-- Inclusion & Gender Equality -->
+        <div class="info-card">
+          <div class="card-icon-circle"><i class="fas fa-balance-scale"></i></div>
+          <h3>Gender Equality & Inclusion</h3>
+          <p>
+            Ensuring both young girls and boys receive equal mentorship, leadership responsibilities, academic resources, and career aspirations from their foundational years.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team / Educators Section -->
+  <section class="team-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="sub">Dedicated Educators</span>
+        <h2>Meet Our Teaching Staff</h2>
+        <p>Passionate, caring teachers committed to nurturing each child's academic, spiritual, and moral growth.</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="IMG-20251106-WA0069.jpg" alt="Teaching Staff" />
+            <span class="team-badge">Grade 1 Faculty</span>
+          </div>
+          <div class="team-info">
+            <h4>Early Childhood & Grade 1</h4>
+            <span>Foundational Literacy & Phonics Specialist</span>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="1759846326194.jpg" alt="Teaching Staff" />
+            <span class="team-badge">Grade 2 Faculty</span>
+          </div>
+          <div class="team-info">
+            <h4>Primary Literacy & Numeracy</h4>
+            <span>Reading Circles & Mathematics Guide</span>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="IMG-20251106-WA0066.jpg" alt="Teaching Staff" />
+            <span class="team-badge">Grade 3 Faculty</span>
+          </div>
+          <div class="team-info">
+            <h4>Science & Indigenous Language</h4>
+            <span>STEM Discovery & ChiTonga Educator</span>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="1759845936889.jpg" alt="Teaching Staff" />
+            <span class="team-badge">Grade 4 Faculty</span>
+          </div>
+          <div class="team-info">
+            <h4>Social Science & Civic Studies</h4>
+            <span>Heritage, Geography & Environmental Studies</span>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="1763713556983.jpg" alt="Teaching Staff" />
+            <span class="team-badge">Grade 5 Faculty</span>
+          </div>
+          <div class="team-info">
+            <h4>Creative Arts & Physical Education</h4>
+            <span>Athletics Coach & Performing Arts Guide</span>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="1763713369021.jpg" alt="Teaching Staff" />
+            <span class="team-badge">Grade 6 Faculty</span>
+          </div>
+          <div class="team-info">
+            <h4>Senior Primary & Examination Prep</h4>
+            <span>National Assessments & Mentorship Lead</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-columns">
+      <div>
+        <div class="footer-brand-title">
+          <img src="school-logo.png" alt="Logo" style="width:40px; height:40px; border-radius:50%;" />
+          <span>Twaabane Primary</span>
+        </div>
+        <p style="font-size:0.88rem; line-height:1.6; margin-bottom:16px;">
+          Fostering empowered, responsible, God-fearing learners in Binga, Zimbabwe through Christian values, cultural respect, and comprehensive primary academic curriculum.
+        </p>
+        <div class="social-icons-row">
+          <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/263777856382" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="aboutusedit.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="academicsedit.html"><i class="fas fa-chevron-right"></i> Academics</a></li>
+          <li><a href="admissionsedit.html"><i class="fas fa-chevron-right"></i> Admissions</a></li>
+          <li><a href="updates.html"><i class="fas fa-chevron-right"></i> Updates & Events</a></li>
+          <li><a href="enrollment.html"><i class="fas fa-chevron-right"></i> Digital Enrollment</a></li>
+          <li><a href="contactedit.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Portals & Access</h4>
+        <ul>
+          <li><a href="signin.html"><i class="fas fa-lock"></i> All Portals Sign In</a></li>
+          <li><a href="student-portal.html"><i class="fas fa-graduation-cap"></i> Student Portal</a></li>
+          <li><a href="staff-portal.html"><i class="fas fa-chalkboard-teacher"></i> Staff Portal</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <div class="footer-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Stand 1060, Silyambembe Suburbs, Binga Centre, Zimbabwe</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+263 77 785 6382<br>+263 77 402 0699</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>twaabane@outlook.com</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bar-bottom">
+      <p>&copy; 2026 Twaabane Primary School. All Rights Reserved. Binga Centre, Zimbabwe.</p>
+    </div>
+  </footer>
+
+  <script>
+    const openM = document.getElementById('openMobile');
+    const closeM = document.getElementById('closeMobile');
+    const modal = document.getElementById('mobileModal');
+    if (openM && closeM && modal) {
+      openM.addEventListener('click', () => modal.classList.add('show'));
+      closeM.addEventListener('click', () => modal.classList.remove('show'));
+      modal.addEventListener('click', (e) => {
+        if(e.target === modal) modal.classList.remove('show');
+      });
+    }
+  </script>
+</body>
+</html>
